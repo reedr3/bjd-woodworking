@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridget J. Duffy — Shop Page Mockup</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F0E8D0; font-family: 'Lora', Georgia, serif; display: flex; justify-content: center; padding: 2rem 1rem; min-height: 100vh; }
+  .frame { width: 100%; max-width: 900px; background: #FAF5EA; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(74,58,24,0.18); border: 1px solid #D8CEAA; }
+  .label { text-align: center; padding: 0.75rem; background: #4A6A34; font-family: 'Courier Prime', monospace; font-size: 0.72rem; color: #8AAE7A; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .m-nav { background: #6B8E4E; padding: 0 2rem; height: 52px; display: flex; align-items: center; justify-content: space-between; }
+  .m-nav-logo { font-family: 'Playfair Display', serif; font-size: 15px; color: #FAF5EA; font-weight: 700; }
+  .m-nav-links { display: flex; gap: 20px; }
+  .m-nav-link { font-family: 'Courier Prime', monospace; font-size: 11px; color: #C8E0B0; letter-spacing: 0.08em; text-transform: uppercase; }
+  .m-nav-link.active { color: #FAF5EA; border-bottom: 1.5px solid #C8963C; padding-bottom: 2px; }
+  .m-nav-cta { font-family: 'Courier Prime', monospace; font-size: 11px; background: #C8963C; color: #FAF5EA; padding: 6px 14px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  .shop-hero { background: #F0E6C8; padding: 2rem 2.5rem 1.75rem; border-bottom: 1px solid #D8CEAA; display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; }
+  .shop-hero-eyebrow { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 8px; }
+  .shop-hero-h1 { font-family: 'Playfair Display', serif; font-size: 30px; color: #4A3A18; font-weight: 700; margin-bottom: 8px; }
+  .shop-hero-sub { font-size: 13px; color: #7A6030; line-height: 1.7; max-width: 400px; }
+  .ship-banner { background: #6B8E4E; border-radius: 6px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+  .ship-text { font-size: 12px; color: #FAF5EA; line-height: 1.5; }
+  .ship-text strong { display: block; font-family: 'Courier Prime', monospace; font-size: 11px; letter-spacing: 0.04em; margin-bottom: 2px; }
+
+  .shop-toolbar { background: #FAF5EA; border-bottom: 1px solid #D8CEAA; padding: 0 2.5rem; display: flex; align-items: center; justify-content: space-between; }
+  .filter-bar { display: flex; align-items: center; overflow-x: auto; }
+  .filter-btn { font-family: 'Courier Prime', monospace; font-size: 11px; color: #8B7A50; padding: 0.85rem 1rem; border-bottom: 2px solid transparent; white-space: nowrap; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; }
+  .filter-btn.active { color: #4A3A18; border-bottom-color: #C8963C; }
+  .sort-wrap { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .sort-label { font-family: 'Courier Prime', monospace; font-size: 11px; color: #8B7A50; }
+  .sort-select { font-family: 'Lora', serif; font-size: 11px; color: #4A3A18; background: #F0E6C8; border: 1px solid #D8CEAA; padding: 4px 10px; border-radius: 4px; outline: none; }
+
+  .cart-bar { background: #4A3A18; padding: 10px 2.5rem; display: flex; align-items: center; justify-content: space-between; }
+  .cart-bar-left { display: flex; align-items: center; gap: 12px; }
+  .cart-text { font-size: 12px; color: #F0E6C8; }
+  .cart-text strong { color: #FAF5EA; font-weight: 500; }
+  .cart-btn { font-family: 'Courier Prime', monospace; font-size: 11px; background: #C8963C; color: #FAF5EA; padding: 6px 16px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .cart-thumb { width: 32px; height: 32px; border-radius: 4px; border: 1.5px solid #C8963C; }
+
+  .shop-body { display: grid; grid-template-columns: 200px 1fr; }
+  .sidebar { background: #F5EED8; border-right: 1px solid #D8CEAA; padding: 1.5rem 1.25rem; }
+  .sb-section { margin-bottom: 1.5rem; }
+  .sb-title { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+  .sb-divider { width: 24px; height: 1.5px; background: #C8963C; margin-bottom: 10px; border-radius: 1px; }
+  .sb-option { display: flex; align-items: center; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #E8DECC; }
+  .sb-option:last-child { border-bottom: none; }
+  .sb-option-label { font-size: 12px; color: #4A3A18; }
+  .sb-option-count { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; }
+  .sb-check { width: 14px; height: 14px; border-radius: 3px; border: 1px solid #C8963C; display: inline-block; flex-shrink: 0; margin-right: 7px; }
+  .sb-check.checked { background: #C8963C; }
+  .price-track { height: 3px; background: #D8CEAA; border-radius: 2px; position: relative; margin: 10px 0 5px; }
+  .price-fill { position: absolute; left: 15%; right: 30%; height: 100%; background: #C8963C; border-radius: 2px; }
+  .price-handle { position: absolute; width: 12px; height: 12px; background: #C8963C; border-radius: 50%; top: -4.5px; }
+  .price-handle-l { left: 15%; transform: translateX(-50%); }
+  .price-handle-r { left: 70%; transform: translateX(-50%); }
+  .price-labels { display: flex; justify-content: space-between; font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; }
+  .wood-swatch-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; margin-top: 6px; }
+  .wood-swatch { height: 28px; border-radius: 4px; border: 2px solid transparent; cursor: pointer; }
+  .wood-swatch.sel { border-color: #C8963C; }
+
+  .products { padding: 1.5rem; }
+  .products-count { font-family: 'Courier Prime', monospace; font-size: 12px; color: #8B7A50; margin-bottom: 1.25rem; }
+  .products-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+
+  .prod-card { background: #FFFDF5; border: 1px solid #D8CEAA; border-radius: 8px; overflow: hidden; cursor: pointer; }
+  .prod-img { position: relative; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
+  .prod-badge { position: absolute; top: 8px; left: 8px; font-family: 'Courier Prime', monospace; font-size: 10px; padding: 2px 8px; border-radius: 3px; font-weight: 500; }
+  .prod-badge-stock { background: #6B8E4E; color: #C8E0B0; }
+  .prod-badge-low { background: #A67A28; color: #FAF5EA; }
+  .prod-badge-sold { background: #4A3A18; color: #C8A860; }
+  .prod-badge-new { background: #C8963C; color: #FAF5EA; }
+  .prod-body { padding: 11px 13px 13px; }
+  .prod-cat { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 3px; }
+  .prod-name { font-family: 'Playfair Display', serif; font-size: 13px; color: #4A3A18; font-weight: 700; margin-bottom: 3px; }
+  .prod-spec { font-family: 'Courier Prime', monospace; font-size: 10px; color: #8B7A50; margin-bottom: 10px; }
+  .prod-footer { display: flex; justify-content: space-between; align-items: center; }
+  .prod-price { font-family: 'Courier Prime', monospace; font-size: 14px; color: #4A3A18; font-weight: 700; }
+  .prod-price-sold { font-family: 'Courier Prime', monospace; font-size: 14px; color: #A67A28; text-decoration: line-through; }
+  .prod-btn { font-family: 'Courier Prime', monospace; font-size: 10px; background: #C8963C; color: #FAF5EA; padding: 5px 11px; border-radius: 3px; }
+  .prod-btn-notify { background: #F0E6C8; color: #A67A28; border: 1px solid #D8CEAA; }
+  .prod-btn-low { background: #A67A28; }
+
+  .notify-strip { background: #F0E6C8; border: 1px solid #D8CEAA; border-radius: 6px; padding: 12px 16px; margin: 0 1.5rem 1.5rem; display: flex; align-items: center; gap: 12px; }
+  .notify-strip-text { font-size: 12px; color: #5A4A28; line-height: 1.55; flex: 1; }
+  .notify-strip-text strong { color: #4A3A18; font-family: 'Playfair Display', serif; font-size: 13px; display: block; margin-bottom: 2px; }
+  .notify-strip-input { display: flex; flex-shrink: 0; }
+  .notify-strip-field { font-size: 11px; background: #FAF5EA; border: 1px solid #D8CEAA; color: #4A3A18; padding: 6px 10px; border-radius: 4px 0 0 4px; width: 140px; outline: none; font-family: 'Lora', serif; }
+  .notify-strip-btn { font-family: 'Courier Prime', monospace; font-size: 11px; background: #C8963C; color: #FAF5EA; padding: 6px 12px; border-radius: 0 4px 4px 0; white-space: nowrap; }
+
+  .m-footer { background: #4A6A34; padding: 1.25rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+  .foot-logo { font-family: 'Playfair Display', serif; font-size: 13px; color: #FAF5EA; font-weight: 700; }
+  .foot-link { font-family: 'Courier Prime', monospace; font-size: 11px; color: #A8C898; letter-spacing: 0.07em; text-transform: uppercase; margin-left: 16px; }
+  .foot-copy { font-family: 'Courier Prime', monospace; font-size: 10px; color: #7A9E6A; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="label">Bridget J. Duffy — Shop Page Mockup · Beam &amp; Plaster Palette</div>
+
+  <div class="m-nav">
+    <div class="m-nav-logo">Bridget J. Duffy</div>
+    <div class="m-nav-links">
+      <span class="m-nav-link">Portfolio</span>
+      <span class="m-nav-link active">Shop</span>
+      <span class="m-nav-link">Commissions</span>
+      <span class="m-nav-link">About</span>
+      <span class="m-nav-link">Contact</span>
+    </div>
+    <span class="m-nav-cta">Request commission</span>
+  </div>
+
+  <div class="shop-hero">
+    <div>
+      <div class="shop-hero-eyebrow">Available now</div>
+      <div class="shop-hero-h1">Shop</div>
+      <div class="shop-hero-sub">Ready-made pieces available for immediate purchase. Each one is finished and ready to ship — or available for local pickup.</div>
+    </div>
+    <div class="ship-banner">
+      <span style="font-size:20px">🚚</span>
+      <div class="ship-text"><strong>Free shipping over $500</strong>Local pickup available in Burlington, VT</div>
+    </div>
+  </div>
+
+  <div class="shop-toolbar">
+    <div class="filter-bar">
+      <span class="filter-btn active">All pieces</span>
+      <span class="filter-btn">Tables</span>
+      <span class="filter-btn">Seating</span>
+      <span class="filter-btn">Storage</span>
+      <span class="filter-btn">Accessories</span>
+    </div>
+    <div class="sort-wrap">
+      <span class="sort-label">Sort by</span>
+      <select class="sort-select"><option>Newest first</option><option>Price: low to high</option><option>Price: high to low</option></select>
+    </div>
+  </div>
+
+  <div class="cart-bar">
+    <div class="cart-bar-left">
+      <span style="font-size:18px;color:#C8963C">🛍</span>
+      <div class="cart-text"><strong>2 items</strong> in your cart — $825</div>
+      <div style="display:flex;gap:6px">
+        <div class="cart-thumb" style="background:#C8A060"></div>
+        <div class="cart-thumb" style="background:#8AAE7A"></div>
+      </div>
+    </div>
+    <span class="cart-btn">View cart &amp; checkout</span>
+  </div>
+
+  <div class="shop-body">
+    <div class="sidebar">
+      <div class="sb-section">
+        <div class="sb-title">Wood type</div><div class="sb-divider"></div>
+        <div class="sb-option"><div style="display:flex;align-items:center"><span class="sb-check checked"></span><span class="sb-option-label">Black Walnut</span></div><span class="sb-option-count">4</span></div>
+        <div class="sb-option"><div style="display:flex;align-items:center"><span class="sb-check checked"></span><span class="sb-option-label">White Oak</span></div><span class="sb-option-count">5</span></div>
+        <div class="sb-option"><div style="display:flex;align-items:center"><span class="sb-check"></span><span class="sb-option-label">Hard Maple</span></div><span class="sb-option-count">3</span></div>
+        <div class="sb-option"><div style="display:flex;align-items:center"><span class="sb-check"></span><span class="sb-option-label">Cherry</span></div><span class="sb-option-count">2</span></div>
+        <div class="sb-option"><div style="display:flex;align-items:center"><span class="sb-check"></span><span class="sb-option-label">Ash</span></div><span class="sb-option-count">1</span></div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">Price range</div><div class="sb-divider"></div>
+        <div class="price-track"><div class="price-fill"></div><div class="price-handle price-handle-l"></div><div class="price-handle price-handle-r"></div></div>
+        <div class="price-labels"><span>$100</span><span>$3,200</span></div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">Availability</div><div class="sb-divider"></div>
+        <div class="sb-option"><div style="display:flex;align-items:center"><span class="sb-check checked"></span><span class="sb-option-label">In stock</span></div><span class="sb-option-count">9</span></div>
+        <div class="sb-option"><div style="display:flex;align-items:center"><span class="sb-check"></span><span class="sb-option-label">Sold — notify me</span></div><span class="sb-option-count">4</span></div>
+      </div>
+      <div class="sb-section">
+        <div class="sb-title">Finish</div><div class="sb-divider"></div>
+        <div class="wood-swatch-grid">
+          <div class="wood-swatch sel" style="background:#C8963C"></div>
+          <div class="wood-swatch sel" style="background:#A67A28"></div>
+          <div class="wood-swatch" style="background:#E8D8A8"></div>
+          <div class="wood-swatch" style="background:#7A5A28"></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="products">
+        <div class="products-count">Showing 9 of 13 pieces</div>
+        <div class="products-grid">
+          <div class="prod-card">
+            <div class="prod-img" style="background:#C8A060"><span class="prod-badge prod-badge-new">New</span></div>
+            <div class="prod-body"><div class="prod-cat">Tables</div><div class="prod-name">Walnut side table</div><div class="prod-spec">Black Walnut · 18″ × 18″ × 24″</div><div class="prod-footer"><span class="prod-price">$680</span><span class="prod-btn">Add to cart</span></div></div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img" style="background:#8AAE7A"><span class="prod-badge prod-badge-stock">In stock</span></div>
+            <div class="prod-body"><div class="prod-cat">Storage</div><div class="prod-name">Oak serving board</div><div class="prod-spec">White Oak · 18″ × 10″</div><div class="prod-footer"><span class="prod-price">$145</span><span class="prod-btn">Add to cart</span></div></div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img" style="background:#D4B870"><span class="prod-badge prod-badge-stock">In stock</span></div>
+            <div class="prod-body"><div class="prod-cat">Storage</div><div class="prod-name">Maple keepsake box</div><div class="prod-spec">Hard Maple · 12″ × 8″ × 5″</div><div class="prod-footer"><span class="prod-price">$220</span><span class="prod-btn">Add to cart</span></div></div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img" style="background:#A8C898"><span class="prod-badge prod-badge-low">Only 1 left</span></div>
+            <div class="prod-body"><div class="prod-cat">Seating</div><div class="prod-name">White oak stool</div><div class="prod-spec">White Oak · 14″ seat · 30″ tall</div><div class="prod-footer"><span class="prod-price">$380</span><span class="prod-btn prod-btn-low">Add to cart</span></div></div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img" style="background:#C8963C"><span class="prod-badge prod-badge-stock">In stock</span></div>
+            <div class="prod-body"><div class="prod-cat">Accessories</div><div class="prod-name">Walnut desk lamp base</div><div class="prod-spec">Black Walnut · 6″ × 6″ × 18″</div><div class="prod-footer"><span class="prod-price">$195</span><span class="prod-btn">Add to cart</span></div></div>
+          </div>
+          <div class="prod-card">
+            <div class="prod-img" style="background:#B89060;opacity:0.75"><span class="prod-badge prod-badge-sold">Sold</span></div>
+            <div class="prod-body"><div class="prod-cat">Tables</div><div class="prod-name">Cherry stool</div><div class="prod-spec">Cherry · 14″ seat</div><div class="prod-footer"><span class="prod-price-sold">$420</span><span class="prod-btn prod-btn-notify">Notify me</span></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="notify-strip">
+        <span style="font-size:20px;color:#A67A28;flex-shrink:0">🔔</span>
+        <div class="notify-strip-text"><strong>Never miss a new piece</strong>New work sells fast. Get an email the moment something new is listed.</div>
+        <div class="notify-strip-input">
+          <input class="notify-strip-field" placeholder="your@email.com"/>
+          <span class="notify-strip-btn">Notify me</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-footer">
+    <div class="foot-logo">Bridget J. Duffy</div>
+    <div><span class="foot-link">Portfolio</span><span class="foot-link">Shop</span><span class="foot-link">Commissions</span><span class="foot-link">About</span></div>
+    <span class="foot-copy">© 2025 Bridget J. Duffy</span>
+  </div>
+</div>
+</body>
+</html>

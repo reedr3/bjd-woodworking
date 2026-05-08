@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap');
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#F0E8D0;font-family:'Lora',Georgia,serif;display:flex;justify-content:center;padding:2rem 1rem;min-height:100vh;}
+  .frame{width:100%;max-width:900px;background:#FAF5EA;border-radius:12px;overflow:hidden;box-shadow:0 8px 40px rgba(74,58,24,0.18);border:1px solid #D8CEAA;}
+  .label{text-align:center;padding:0.75rem;background:#4A6A34;font-family:'Courier Prime',monospace;font-size:0.72rem;color:#8AAE7A;letter-spacing:0.12em;text-transform:uppercase;}
+  .m-nav{background:#6B8E4E;padding:0 2rem;height:52px;display:flex;align-items:center;justify-content:space-between;}
+  .m-nav-logo{font-family:'Playfair Display',serif;font-size:15px;color:#FAF5EA;font-weight:700;}
+  .m-nav-links{display:flex;gap:20px;}
+  .m-nav-link{font-family:'Courier Prime',monospace;font-size:11px;color:#C8E0B0;letter-spacing:0.08em;text-transform:uppercase;}
+  .m-nav-link.active{color:#FAF5EA;border-bottom:1.5px solid #C8963C;padding-bottom:2px;}
+  .m-nav-cta{font-family:'Courier Prime',monospace;font-size:11px;background:#C8963C;color:#FAF5EA;padding:6px 14px;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;}
+
+  .page-hero{background:#F0E6C8;padding:2.25rem 2.5rem 2rem;border-bottom:1px solid #D8CEAA;}
+  .eyebrow{font-family:'Courier Prime',monospace;font-size:10px;color:#A67A28;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:8px;}
+  .page-h1{font-family:'Playfair Display',serif;font-size:30px;color:#4A3A18;font-weight:700;margin-bottom:10px;}
+  .page-sub{font-size:13px;color:#7A6030;line-height:1.75;max-width:520px;}
+
+  .timeline-section{background:#EDE0B8;padding:2rem 2.5rem;}
+  .section-label{font-family:'Courier Prime',monospace;font-size:10px;color:#A67A28;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px;}
+  .section-divider{width:36px;height:2px;background:#C8963C;margin-bottom:1.25rem;border-radius:1px;}
+  .section-h2{font-family:'Playfair Display',serif;font-size:20px;color:#4A3A18;font-weight:700;margin-bottom:1.5rem;}
+
+  .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+  .timeline::before{content:'';position:absolute;top:28px;left:12.5%;right:12.5%;height:2px;background:#C8963C;opacity:0.35;z-index:0;}
+  .tl-step{text-align:center;position:relative;z-index:1;padding:0 8px;}
+  .tl-circle{width:56px;height:56px;border-radius:50%;background:#C8963C;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;border:3px solid #F0E6C8;}
+  .tl-circle-num{font-family:'Courier Prime',monospace;font-size:11px;color:#FAF5EA;letter-spacing:0.05em;}
+  .tl-title{font-family:'Playfair Display',serif;font-size:14px;color:#4A3A18;font-weight:700;margin-bottom:5px;}
+  .tl-desc{font-size:11px;color:#7A6030;line-height:1.6;}
+
+  .testi-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:1.5rem;}
+  .mini-testi{background:#FFFDF5;border:1px solid #D8CEAA;border-radius:8px;padding:12px 14px;}
+  .stars{color:#C8963C;font-size:11px;margin-bottom:6px;}
+  .mini-q{font-family:'Lora',serif;font-size:11px;color:#6A5030;line-height:1.7;font-style:italic;margin-bottom:8px;}
+  .mini-auth{font-family:'Courier Prime',monospace;font-size:10px;color:#4A3A18;}
+  .mini-proj{font-family:'Courier Prime',monospace;font-size:10px;color:#A67A28;margin-top:2px;}
+
+  .form-section{background:#FAF5EA;padding:2rem 2.5rem;}
+  .form-wrap{background:#FFFDF5;border:1px solid #D8CEAA;border-radius:10px;overflow:hidden;}
+
+  .form-progress{background:#F0E6C8;padding:1rem 1.5rem;border-bottom:1px solid #D8CEAA;}
+  .progress-steps{display:flex;align-items:center;gap:0;}
+  .ps{display:flex;align-items:center;}
+  .ps-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Courier Prime',monospace;font-size:11px;flex-shrink:0;}
+  .ps-dot.done{background:#6B8E4E;color:#FAF5EA;}
+  .ps-dot.active{background:#C8963C;color:#FAF5EA;}
+  .ps-dot.idle{background:#E8DECC;color:#A67A28;}
+  .ps-label{font-family:'Courier Prime',monospace;font-size:10px;margin-left:6px;letter-spacing:0.05em;text-transform:uppercase;}
+  .ps-label.done{color:#6B8E4E;}
+  .ps-label.active{color:#4A3A18;}
+  .ps-label.idle{color:#A67A28;}
+  .ps-line{flex:1;height:1.5px;background:#D8CEAA;margin:0 10px;}
+  .ps-line.done{background:#6B8E4E;}
+
+  .form-body{padding:1.5rem;}
+  .form-step-label{font-family:'Courier Prime',monospace;font-size:10px;color:#A67A28;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:4px;}
+  .form-step-h{font-family:'Playfair Display',serif;font-size:18px;color:#4A3A18;font-weight:700;margin-bottom:4px;}
+  .form-step-sub{font-size:12px;color:#7A6030;margin-bottom:1.5rem;}
+
+  .form-row{margin-bottom:1.1rem;}
+  .form-label{font-family:'Courier Prime',monospace;font-size:11px;color:#5A4A28;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:5px;display:block;}
+  .form-input{width:100%;background:#F5EED8;border:1px solid #D8CEAA;border-radius:5px;padding:9px 12px;font-family:'Lora',serif;font-size:13px;color:#4A3A18;outline:none;}
+  .form-input::placeholder{color:#B8A880;}
+  .form-textarea{width:100%;background:#F5EED8;border:1px solid #D8CEAA;border-radius:5px;padding:9px 12px;font-family:'Lora',serif;font-size:13px;color:#4A3A18;outline:none;resize:none;height:80px;}
+  .form-textarea::placeholder{color:#B8A880;}
+  .form-select{width:100%;background:#F5EED8;border:1px solid #D8CEAA;border-radius:5px;padding:9px 12px;font-family:'Lora',serif;font-size:13px;color:#4A3A18;outline:none;appearance:none;}
+
+  .type-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:0.25rem;}
+  .type-btn{border:1.5px solid #D8CEAA;border-radius:7px;padding:10px 8px;text-align:center;cursor:pointer;background:#F5EED8;}
+  .type-btn.sel{border-color:#C8963C;background:#FDF5E6;}
+  .type-icon{font-size:18px;margin-bottom:4px;display:block;color:#C8963C;}
+  .type-label{font-family:'Courier Prime',monospace;font-size:10px;color:#4A3A18;letter-spacing:0.04em;text-transform:uppercase;}
+
+  .form-two{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+
+  .form-footer{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;border-top:1px solid #E8DECC;background:#F0E6C8;}
+  .btn-back{font-family:'Courier Prime',monospace;font-size:11px;border:1px solid #C8CEAA;color:#8B7A50;padding:8px 18px;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;background:transparent;cursor:pointer;}
+  .btn-next{font-family:'Courier Prime',monospace;font-size:11px;background:#C8963C;color:#FAF5EA;padding:8px 22px;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;border:none;cursor:pointer;}
+  .step-hint{font-family:'Courier Prime',monospace;font-size:10px;color:#A67A28;}
+
+  .faq-section{background:#F0E6C8;padding:2rem 2.5rem;}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:0.25rem;}
+  .faq-item{background:#FFFDF5;border:1px solid #D8CEAA;border-radius:8px;padding:14px 16px;}
+  .faq-q{font-family:'Playfair Display',serif;font-size:13px;color:#4A3A18;font-weight:700;margin-bottom:6px;}
+  .faq-a{font-size:12px;color:#7A6030;line-height:1.7;}
+
+  .cta-strip{background:#5A7A3C;padding:1.5rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+  .cta-copy{font-family:'Playfair Display',serif;font-size:16px;color:#FAF5EA;font-weight:700;}
+  .cta-sub{font-size:12px;color:#A8C898;margin-top:3px;}
+  .btn-cta-white{font-family:'Courier Prime',monospace;font-size:11px;background:#FAF5EA;color:#4A3A18;padding:10px 24px;border-radius:4px;letter-spacing:0.05em;text-transform:uppercase;white-space:nowrap;}
+
+  .m-footer{background:#4A6A34;padding:1.25rem 2.5rem;display:flex;justify-content:space-between;align-items:center;}
+  .foot-logo{font-family:'Playfair Display',serif;font-size:13px;color:#FAF5EA;font-weight:700;}
+  .foot-link{font-family:'Courier Prime',monospace;font-size:11px;color:#A8C898;letter-spacing:0.07em;text-transform:uppercase;margin-left:16px;}
+  .foot-copy{font-family:'Courier Prime',monospace;font-size:10px;color:#7A9E6A;}
+</style>
+<div class="frame">
+  <div class="label">Bridget J. Duffy — Commissions Page Mockup · Beam &amp; Plaster Palette</div>
+
+  <div class="m-nav">
+    <div class="m-nav-logo">Bridget J. Duffy</div>
+    <div class="m-nav-links">
+      <span class="m-nav-link">Portfolio</span>
+      <span class="m-nav-link">Shop</span>
+      <span class="m-nav-link active">Commissions</span>
+      <span class="m-nav-link">About</span>
+      <span class="m-nav-link">Contact</span>
+    </div>
+    <span class="m-nav-cta">Request commission</span>
+  </div>
+
+  <div class="page-hero">
+    <div class="eyebrow">Custom work</div>
+    <div class="page-h1">Commission a piece</div>
+    <div class="page-sub">Every commission begins with a conversation. From first sketch to final delivery, we work together at every step — no surprises, no shortcuts. Typical lead time is 8–14 weeks depending on complexity.</div>
+  </div>
+
+  <div class="timeline-section">
+    <div class="section-label">How it works</div>
+    <div class="section-divider"></div>
+    <div class="section-h2">The process</div>
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-circle"><div class="tl-circle-num">01</div></div>
+        <div class="tl-title">Consult</div>
+        <div class="tl-desc">We discuss your vision, space, and budget over a free 30-minute call. No commitment required.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-circle"><div class="tl-circle-num">02</div></div>
+        <div class="tl-title">Design</div>
+        <div class="tl-desc">Sketches, material samples, and a fixed quote before a single board is cut.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-circle"><div class="tl-circle-num">03</div></div>
+        <div class="tl-title">Build</div>
+        <div class="tl-desc">Handcrafted in our workshop. Progress photos sent weekly so you can follow along.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-circle"><div class="tl-circle-num">04</div></div>
+        <div class="tl-title">Deliver</div>
+        <div class="tl-desc">White-glove delivery and installation in your home. We don't leave until it's perfect.</div>
+      </div>
+    </div>
+
+    <div class="testi-strip">
+      <div class="mini-testi">
+        <div class="stars">★★★★★</div>
+        <div class="mini-q">"The process was so clear from the start — I knew exactly what I was getting and when."</div>
+        <div class="mini-auth">Sarah M.</div><div class="mini-proj">Walnut dining table</div>
+      </div>
+      <div class="mini-testi">
+        <div class="stars">★★★★★</div>
+        <div class="mini-q">"Bridget sent photos every week. Watching it come together was almost as good as the piece itself."</div>
+        <div class="mini-auth">James &amp; Lori T.</div><div class="mini-proj">White oak sideboard</div>
+      </div>
+      <div class="mini-testi">
+        <div class="stars">★★★★★</div>
+        <div class="mini-q">"From first sketch to delivery — seamless. I couldn't be happier with the result."</div>
+        <div class="mini-auth">Rachel K.</div><div class="mini-proj">Cherry writing desk</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <div class="section-label">Start your request</div>
+    <div class="section-divider"></div>
+    <div style="font-family:'Playfair Display',serif;font-size:20px;color:#4A3A18;font-weight:700;margin-bottom:1.25rem;">Tell us about your piece</div>
+    <div class="form-wrap">
+      <div class="form-progress">
+        <div class="progress-steps">
+          <div class="ps">
+            <div class="ps-dot active">1</div>
+            <span class="ps-label active">Project</span>
+          </div>
+          <div class="ps-line idle"></div>
+          <div class="ps">
+            <div class="ps-dot idle">2</div>
+            <span class="ps-label idle">Dimensions</span>
+          </div>
+          <div class="ps-line idle"></div>
+          <div class="ps">
+            <div class="ps-dot idle">3</div>
+            <span class="ps-label idle">Budget</span>
+          </div>
+          <div class="ps-line idle"></div>
+          <div class="ps">
+            <div class="ps-dot idle">4</div>
+            <span class="ps-label idle">Contact</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-body">
+        <div class="form-step-label">Step 1 of 4</div>
+        <div class="form-step-h">What are you looking to have made?</div>
+        <div class="form-step-sub">Choose a category and describe what you have in mind. Don't worry about details yet — that comes next.</div>
+
+        <div class="form-row">
+          <label class="form-label">Piece type</label>
+          <div class="type-grid">
+            <div class="type-btn sel">
+              <span class="type-icon">⬛</span>
+              <div class="type-label">Table</div>
+            </div>
+            <div class="type-btn">
+              <span class="type-icon">🪑</span>
+              <div class="type-label">Seating</div>
+            </div>
+            <div class="type-btn">
+              <span class="type-icon">🗄</span>
+              <div class="type-label">Storage</div>
+            </div>
+            <div class="type-btn">
+              <span class="type-icon">📦</span>
+              <div class="type-label">Other</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Describe what you have in mind</label>
+          <textarea class="form-textarea" placeholder="e.g. A dining table for 6–8 people, live edge if possible, to go in a modern farmhouse kitchen. I'd love walnut but open to suggestions..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <label class="form-label">Inspired by anything in the portfolio?</label>
+          <input class="form-input" type="text" placeholder="e.g. The heirloom walnut dining table — something in that direction">
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <div class="step-hint">No commitment — we'll review and reach out within 2 business days</div>
+        <button class="btn-next">Next: Dimensions →</button>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;background:#FFFDF5;border:1px solid #D8CEAA;border-radius:10px;overflow:hidden;">
+      <div style="background:#F0E6C8;padding:0.75rem 1.5rem;border-bottom:1px solid #D8CEAA;">
+        <div style="font-family:'Courier Prime',monospace;font-size:10px;color:#A67A28;letter-spacing:0.15em;text-transform:uppercase;">Preview — Step 2 of 4</div>
+      </div>
+      <div class="form-body" style="padding-top:1.25rem;">
+        <div class="form-step-label">Step 2 of 4</div>
+        <div class="form-step-h">Dimensions &amp; materials</div>
+        <div class="form-step-sub">Give us your best estimate — nothing is locked in until the design phase.</div>
+        <div class="form-two">
+          <div class="form-row" style="margin-bottom:0">
+            <label class="form-label">Approx. width</label>
+            <input class="form-input" type="text" placeholder='e.g. 72"'>
+          </div>
+          <div class="form-row" style="margin-bottom:0">
+            <label class="form-label">Approx. depth</label>
+            <input class="form-input" type="text" placeholder='e.g. 36"'>
+          </div>
+        </div>
+        <div style="height:10px"></div>
+        <div class="form-row">
+          <label class="form-label">Wood preference</label>
+          <select class="form-select">
+            <option>Black Walnut</option>
+            <option>White Oak</option>
+            <option>Hard Maple</option>
+            <option>Cherry</option>
+            <option>Not sure — open to suggestions</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label">Finish preference</label>
+          <select class="form-select">
+            <option>Natural oil (warm, matte)</option>
+            <option>Hard wax oil (durable, matte)</option>
+            <option>Satin lacquer</option>
+            <option>Not sure — advise me</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-footer">
+        <button class="btn-back">← Back</button>
+        <button class="btn-next">Next: Budget →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <div class="section-label">Questions</div>
+    <div class="section-divider"></div>
+    <div class="section-h2" style="margin-bottom:1.25rem;">Frequently asked</div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">How much does a commission cost?</div>
+        <div class="faq-a">Every piece is priced individually based on materials, complexity, and time. Most dining tables run $1,800–$4,500. Smaller pieces start from $300. You'll receive a fixed quote before anything is confirmed.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How long does it take?</div>
+        <div class="faq-a">Typical lead time is 8–14 weeks from deposit to delivery. Simpler pieces can be faster. We'll give you a firm timeline in the design phase before you commit.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do I pay upfront?</div>
+        <div class="faq-a">A 50% deposit is required to begin the build, with the balance due on delivery. The consultation and design phase are free with no obligation.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I choose the wood species?</div>
+        <div class="faq-a">Absolutely — wood selection is one of the most personal parts of the process. We'll show you samples during the design phase so you can see and touch the grain before deciding.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you ship commissions?</div>
+        <div class="faq-a">Yes — we ship across the continental US with white-glove delivery on pieces over $1,500. Local delivery and installation in Vermont is always included.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I'm not happy with the result?</div>
+        <div class="faq-a">We share sketches and material samples before building anything. Final approval happens before the build begins — so surprises at delivery are essentially impossible.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div>
+      <div class="cta-copy">Ready to start? It's just a conversation.</div>
+      <div class="cta-sub">No commitment until you approve the design and quote.</div>
+    </div>
+    <div class="btn-cta-white">Start your request</div>
+  </div>
+
+  <div class="m-footer">
+    <div class="foot-logo">Bridget J. Duffy</div>
+    <div><span class="foot-link">Portfolio</span><span class="foot-link">Shop</span><span class="foot-link">Commissions</span><span class="foot-link">About</span></div>
+    <span class="foot-copy">© 2025 Bridget J. Duffy</span>
+  </div>
+</div>

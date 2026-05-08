@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridget J. Duffy — Homepage Mockup</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F0E8D0; font-family: 'Lora', Georgia, serif; display: flex; justify-content: center; padding: 2rem 1rem; min-height: 100vh; }
+  .frame { width: 100%; max-width: 900px; background: #FAF5EA; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(74,58,24,0.18); border: 1px solid #D8CEAA; }
+  .label { text-align: center; padding: 0.75rem; background: #4A6A34; font-family: 'Courier Prime', monospace; font-size: 0.72rem; color: #8AAE7A; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .m-nav { background: #6B8E4E; padding: 0 2rem; height: 52px; display: flex; align-items: center; justify-content: space-between; }
+  .m-nav-logo { font-family: 'Playfair Display', serif; font-size: 15px; color: #FAF5EA; font-weight: 700; letter-spacing: 0.03em; }
+  .m-nav-links { display: flex; gap: 20px; }
+  .m-nav-link { font-size: 11px; color: #C8E0B0; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'Courier Prime', monospace; }
+  .m-nav-cta { font-size: 11px; background: #C8963C; color: #FAF5EA; padding: 6px 14px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; font-family: 'Courier Prime', monospace; }
+
+  .m-hero { background: #F0E6C8; display: flex; min-height: 240px; overflow: hidden; }
+  .m-hero-left { padding: 2.5rem 2rem 2.5rem 2.5rem; flex: 1; }
+  .m-hero-right { width: 42%; background: #C8A060; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .m-hero-eyebrow { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; }
+  .m-hero-h1 { font-family: 'Playfair Display', serif; font-size: 28px; color: #4A3A18; line-height: 1.25; margin-bottom: 10px; font-weight: 700; }
+  .m-hero-sub { font-size: 13px; color: #7A6030; line-height: 1.7; margin-bottom: 22px; max-width: 300px; }
+  .m-hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-amber { font-family: 'Courier Prime', monospace; font-size: 11px; background: #C8963C; color: #FAF5EA; padding: 8px 18px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; display: inline-block; }
+  .btn-ghost-green { font-family: 'Courier Prime', monospace; font-size: 11px; border: 1px solid #8AAE7A; color: #5A7A48; padding: 8px 18px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; display: inline-block; }
+  .btn-ghost-amber { font-family: 'Courier Prime', monospace; font-size: 11px; border: 1px solid #C8963C; color: #A67A28; padding: 8px 18px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; display: inline-block; }
+
+  .m-sec { padding: 2.25rem 2.5rem; }
+  .m-sec-card { background: #F0E6C8; }
+  .m-sec-mid { background: #EDE0B8; }
+  .m-sec-green { background: #6B8E4E; }
+  .m-label { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
+  .m-label-lt { color: #C8E0B0; }
+  .m-divider { width: 36px; height: 2px; background: #C8963C; margin-bottom: 1rem; border-radius: 1px; }
+  .m-divider-grn { background: #8AAE7A; }
+  .m-h2 { font-family: 'Playfair Display', serif; font-size: 22px; color: #4A3A18; margin-bottom: 1.5rem; font-weight: 700; }
+  .m-h2-lt { color: #FAF5EA; }
+  .sec-hdr { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1.25rem; }
+  .view-all { font-family: 'Courier Prime', monospace; font-size: 11px; color: #C8963C; letter-spacing: 0.06em; text-transform: uppercase; border-bottom: 1px solid #C8963C; padding-bottom: 1px; }
+
+  .port-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+  .port-item { border-radius: 6px; overflow: hidden; position: relative; cursor: pointer; }
+  .port-img { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
+  .port-overlay { position: absolute; inset: 0; background: rgba(74,58,24,0); display: flex; flex-direction: column; justify-content: flex-end; padding: 12px; transition: background 0.2s; }
+  .port-item:hover .port-overlay { background: rgba(74,58,24,0.85); }
+  .port-name { font-family: 'Playfair Display', serif; font-size: 13px; color: #FAF5EA; margin-bottom: 3px; opacity: 0; transition: opacity 0.2s; }
+  .port-item:hover .port-name { opacity: 1; }
+  .port-meta { font-family: 'Courier Prime', monospace; font-size: 10px; color: #C8963C; opacity: 0; transition: opacity 0.2s; }
+  .port-item:hover .port-meta { opacity: 1; }
+
+  .shop-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+  .shop-card { background: #FFFDF5; border: 1px solid #D8CEAA; border-radius: 8px; overflow: hidden; }
+  .shop-img { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; }
+  .shop-badge { position: absolute; top: 8px; left: 8px; font-family: 'Courier Prime', monospace; font-size: 10px; background: #6B8E4E; color: #C8E0B0; padding: 2px 7px; border-radius: 3px; }
+  .shop-badge-sold { background: #A67A28; color: #FAF5EA; }
+  .shop-body { padding: 10px 13px 13px; }
+  .shop-name { font-family: 'Playfair Display', serif; font-size: 13px; color: #4A3A18; margin-bottom: 3px; font-weight: 700; }
+  .shop-spec { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; margin-bottom: 9px; }
+  .shop-foot { display: flex; justify-content: space-between; align-items: center; }
+  .shop-price { font-family: 'Courier Prime', monospace; font-size: 14px; color: #4A3A18; font-weight: 700; }
+  .shop-btn { font-family: 'Courier Prime', monospace; font-size: 10px; background: #C8963C; color: #FAF5EA; padding: 5px 11px; border-radius: 3px; }
+  .shop-btn-sold { background: #D8CEAA; color: #8B7A50; }
+
+  .process-strip { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); background: #5A7A3C; border-radius: 8px; overflow: hidden; margin-top: 1.5rem; }
+  .proc-step { padding: 1rem 1.1rem; border-right: 1px solid #6B8E4E; }
+  .proc-step:last-child { border-right: none; }
+  .proc-num { font-family: 'Courier Prime', monospace; font-size: 10px; color: #8AAE7A; margin-bottom: 4px; letter-spacing: 0.1em; }
+  .proc-title { font-family: 'Playfair Display', serif; font-size: 13px; color: #FAF5EA; font-weight: 700; margin-bottom: 3px; }
+  .proc-desc { font-size: 10px; color: #A8C898; line-height: 1.5; }
+
+  .testi-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+  .testi { background: #FFFDF5; border: 1px solid #D8CEAA; border-radius: 8px; padding: 14px; }
+  .stars { color: #C8963C; font-size: 12px; margin-bottom: 8px; }
+  .testi-q { font-family: 'Lora', serif; font-size: 12px; color: #6A5030; line-height: 1.7; margin-bottom: 10px; font-style: italic; }
+  .testi-auth { font-family: 'Courier Prime', monospace; font-size: 11px; color: #4A3A18; }
+  .testi-proj { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; margin-top: 2px; }
+
+  .ig-grid { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 6px; }
+  .ig-tile { aspect-ratio: 1; border-radius: 5px; }
+
+  .m-footer { background: #4A6A34; padding: 1.75rem 2.5rem 1.25rem; }
+  .foot-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem; }
+  .foot-logo { font-family: 'Playfair Display', serif; font-size: 15px; color: #FAF5EA; margin-bottom: 4px; font-weight: 700; }
+  .foot-tag { font-size: 11px; color: #8AAE7A; font-style: italic; }
+  .foot-links { display: flex; gap: 16px; align-items: center; }
+  .foot-link { font-family: 'Courier Prime', monospace; font-size: 11px; color: #A8C898; letter-spacing: 0.07em; text-transform: uppercase; }
+  .foot-nl { display: flex; }
+  .foot-input { font-size: 11px; background: #3A5828; border: 1px solid #6B8E4E; color: #C8E0B0; padding: 6px 10px; border-radius: 4px 0 0 4px; width: 150px; outline: none; font-family: 'Lora', serif; }
+  .foot-sub { font-family: 'Courier Prime', monospace; font-size: 11px; background: #C8963C; color: #FAF5EA; padding: 6px 12px; border-radius: 0 4px 4px 0; }
+  .foot-bot { border-top: 1px solid #5A7A3C; padding-top: 1rem; display: flex; justify-content: space-between; align-items: center; }
+  .foot-copy { font-family: 'Courier Prime', monospace; font-size: 10px; color: #7A9E6A; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="label">Bridget J. Duffy — Homepage Mockup · Beam &amp; Plaster Palette</div>
+
+  <div class="m-nav">
+    <div class="m-nav-logo">Bridget J. Duffy</div>
+    <div class="m-nav-links">
+      <span class="m-nav-link">Portfolio</span>
+      <span class="m-nav-link">Shop</span>
+      <span class="m-nav-link">Commissions</span>
+      <span class="m-nav-link">About</span>
+      <span class="m-nav-link">Contact</span>
+    </div>
+    <span class="m-nav-cta">Request commission</span>
+  </div>
+
+  <div class="m-hero">
+    <div class="m-hero-left">
+      <div class="m-hero-eyebrow">Handcrafted furniture · Est. 2009</div>
+      <div class="m-hero-h1">Made by hand.<br>Built to last<br>generations.</div>
+      <div class="m-hero-sub">Each piece is cut, shaped, and finished in our workshop — using locally sourced hardwoods and time-honoured joinery.</div>
+      <div class="m-hero-btns">
+        <span class="btn-amber">View portfolio</span>
+        <span class="btn-ghost-green">Shop pieces</span>
+        <span class="btn-ghost-amber">Commission work</span>
+      </div>
+    </div>
+    <div class="m-hero-right">
+      <svg width="100%" height="100%" viewBox="0 0 240 240" preserveAspectRatio="xMidYMid slice">
+        <rect width="240" height="240" fill="#B8822C"/>
+        <ellipse cx="120" cy="60" rx="90" ry="80" fill="#D4A848" opacity="0.35"/>
+        <ellipse cx="120" cy="115" rx="54" ry="54" fill="none" stroke="#FAF5EA" stroke-width="6" opacity="0.65"/>
+        <ellipse cx="120" cy="115" rx="47" ry="47" fill="#6B8E4E" opacity="0.55"/>
+        <line x1="92" y1="115" x2="148" y2="115" stroke="#FAF5EA" stroke-width="2.5" opacity="0.55"/>
+        <line x1="120" y1="87" x2="120" y2="143" stroke="#FAF5EA" stroke-width="2.5" opacity="0.55"/>
+        <circle cx="120" cy="115" r="5" fill="#FAF5EA" opacity="0.75"/>
+        <rect x="28" y="22" width="184" height="7" rx="3.5" fill="#7A5418" opacity="0.4"/>
+        <text x="120" y="188" text-anchor="middle" font-size="10" fill="#FAF5EA" opacity="0.5" font-family="Georgia,serif">[ hero photo ]</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="m-sec">
+    <div class="sec-hdr">
+      <div><div class="m-label">Recent work</div><div class="m-divider"></div><div class="m-h2" style="margin-bottom:0">Featured pieces</div></div>
+      <span class="view-all">View all work</span>
+    </div>
+    <div class="port-grid">
+      <div class="port-item"><div class="port-img" style="background:#C8A060"></div><div class="port-overlay"><div class="port-name">Walnut dining table</div><div class="port-meta">Walnut · 84″ × 38″</div></div></div>
+      <div class="port-item"><div class="port-img" style="background:#8AAE7A"></div><div class="port-overlay"><div class="port-name">White oak sideboard</div><div class="port-meta">White Oak · 60″ × 32″</div></div></div>
+      <div class="port-item"><div class="port-img" style="background:#D4A848"></div><div class="port-overlay"><div class="port-name">Cherry writing desk</div><div class="port-meta">Cherry · 48″ × 24″</div></div></div>
+      <div class="port-item"><div class="port-img" style="background:#A8C898"></div><div class="port-overlay"><div class="port-name">Maple side tables</div><div class="port-meta">Hard Maple · Set of 2</div></div></div>
+      <div class="port-item"><div class="port-img" style="background:#C8963C"></div><div class="port-overlay"><div class="port-name">Walnut bookshelf</div><div class="port-meta">Walnut · 72″ tall</div></div></div>
+      <div class="port-item"><div class="port-img" style="background:#6B9E6A"></div><div class="port-overlay"><div class="port-name">Oak coffee table</div><div class="port-meta">White Oak · 48″ × 24″</div></div></div>
+    </div>
+  </div>
+
+  <div class="m-sec m-sec-card">
+    <div class="sec-hdr">
+      <div><div class="m-label">Available now</div><div class="m-divider"></div><div class="m-h2" style="margin-bottom:0">Shop pieces</div></div>
+      <span class="view-all">Browse all</span>
+    </div>
+    <div class="shop-grid">
+      <div class="shop-card"><div class="shop-img" style="background:#C8A060"><span class="shop-badge">In stock</span></div><div class="shop-body"><div class="shop-name">Walnut side table</div><div class="shop-spec">Walnut · 18″ × 24″</div><div class="shop-foot"><span class="shop-price">$680</span><span class="shop-btn">Add to cart</span></div></div></div>
+      <div class="shop-card"><div class="shop-img" style="background:#8AAE7A"><span class="shop-badge">In stock</span></div><div class="shop-body"><div class="shop-name">Oak serving board</div><div class="shop-spec">White Oak · 18″ × 10″</div><div class="shop-foot"><span class="shop-price">$145</span><span class="shop-btn">Add to cart</span></div></div></div>
+      <div class="shop-card"><div class="shop-img" style="background:#D4A848"><span class="shop-badge shop-badge-sold">Sold</span></div><div class="shop-body"><div class="shop-name">Cherry stool</div><div class="shop-spec">Cherry · 14″ seat</div><div class="shop-foot"><span class="shop-price" style="text-decoration:line-through;color:#A67A28">$420</span><span class="shop-btn shop-btn-sold">Notify me</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="m-sec m-sec-mid">
+    <div class="m-label">How it works</div><div class="m-divider"></div>
+    <div class="m-h2" style="margin-bottom:6px">Commission a piece</div>
+    <p style="font-size:13px;color:#7A6030;line-height:1.7;max-width:500px">Have something specific in mind? Every commission starts with a conversation. We'll work together from first sketch to final delivery.</p>
+    <div class="process-strip">
+      <div class="proc-step"><div class="proc-num">Step 01</div><div class="proc-title">Consult</div><div class="proc-desc">We discuss your vision, space, and budget over a free call.</div></div>
+      <div class="proc-step"><div class="proc-num">Step 02</div><div class="proc-title">Design</div><div class="proc-desc">Sketches and material samples before any wood is cut.</div></div>
+      <div class="proc-step"><div class="proc-num">Step 03</div><div class="proc-title">Build</div><div class="proc-desc">Handcrafted in our workshop, with progress updates throughout.</div></div>
+      <div class="proc-step"><div class="proc-num">Step 04</div><div class="proc-title">Deliver</div><div class="proc-desc">White-glove delivery and installation in your home.</div></div>
+    </div>
+    <div style="margin-top:1.25rem"><span class="btn-amber">Start your commission</span></div>
+  </div>
+
+  <div class="m-sec">
+    <div class="m-label">What clients say</div><div class="m-divider"></div>
+    <div class="m-h2">Testimonials</div>
+    <div class="testi-grid">
+      <div class="testi"><div class="stars">★★★★★</div><div class="testi-q">"The dining table exceeded every expectation. The grain matching alone took my breath away."</div><div class="testi-auth">Sarah M.</div><div class="testi-proj">Custom walnut dining table</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><div class="testi-q">"Nothing comes close to the quality or care that went into our sideboard."</div><div class="testi-auth">James &amp; Lori T.</div><div class="testi-proj">White oak sideboard</div></div>
+      <div class="testi"><div class="stars">★★★★★</div><div class="testi-q">"From first sketch to delivery, the process was seamless. Compliments every time someone visits."</div><div class="testi-auth">Rachel K.</div><div class="testi-proj">Cherry writing desk</div></div>
+    </div>
+  </div>
+
+  <div class="m-sec m-sec-green">
+    <div class="m-label m-label-lt">Follow along</div>
+    <div class="m-divider m-divider-grn"></div>
+    <div class="m-h2 m-h2-lt" style="margin-bottom:1rem">@bridgetjduffy on Instagram</div>
+    <div class="ig-grid">
+      <div class="ig-tile" style="background:#C8A060"></div>
+      <div class="ig-tile" style="background:#8AAE7A"></div>
+      <div class="ig-tile" style="background:#D4A848"></div>
+      <div class="ig-tile" style="background:#A8C898"></div>
+      <div class="ig-tile" style="background:#C8963C"></div>
+      <div class="ig-tile" style="background:#6B8E4E"></div>
+    </div>
+  </div>
+
+  <div class="m-footer">
+    <div class="foot-top">
+      <div><div class="foot-logo">Bridget J. Duffy</div><div class="foot-tag">Handmade with love since 2009</div></div>
+      <div class="foot-links">
+        <span class="foot-link">Portfolio</span><span class="foot-link">Shop</span><span class="foot-link">Commissions</span><span class="foot-link">About</span><span class="foot-link">Contact</span>
+      </div>
+      <div>
+        <div style="font-family:'Courier Prime',monospace;font-size:10px;color:#8AAE7A;margin-bottom:6px;letter-spacing:0.1em;text-transform:uppercase">New pieces, first</div>
+        <div class="foot-nl"><input class="foot-input" placeholder="your@email.com"/><span class="foot-sub">Subscribe</span></div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span class="foot-copy">© 2025 Bridget J. Duffy. All rights reserved.</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

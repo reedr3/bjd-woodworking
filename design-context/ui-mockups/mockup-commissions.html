@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bridget J. Duffy — Commissions Page Mockup</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F0E8D0; font-family: 'Lora', Georgia, serif; display: flex; justify-content: center; padding: 2rem 1rem; min-height: 100vh; }
+  .frame { width: 100%; max-width: 900px; background: #FAF5EA; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(74,58,24,0.18); border: 1px solid #D8CEAA; }
+  .label { text-align: center; padding: 0.75rem; background: #4A6A34; font-family: 'Courier Prime', monospace; font-size: 0.72rem; color: #8AAE7A; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* Nav (shared) */
+  .m-nav { background: #6B8E4E; padding: 0 2rem; height: 52px; display: flex; align-items: center; justify-content: space-between; }
+  .m-nav-logo { font-family: 'Playfair Display', serif; font-size: 15px; color: #FAF5EA; font-weight: 700; }
+  .m-nav-links { display: flex; gap: 20px; }
+  .m-nav-link { font-family: 'Courier Prime', monospace; font-size: 11px; color: #C8E0B0; letter-spacing: 0.08em; text-transform: uppercase; }
+  .m-nav-link.active { color: #FAF5EA; border-bottom: 1.5px solid #C8963C; padding-bottom: 2px; }
+  .m-nav-cta { font-family: 'Courier Prime', monospace; font-size: 11px; background: #C8963C; color: #FAF5EA; padding: 6px 14px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* Hero */
+  .c-hero { background: #F0E6C8; display: grid; grid-template-columns: 1fr 0.85fr; min-height: 270px; border-bottom: 1px solid #D8CEAA; }
+  .c-hero-left { padding: 2.5rem 2rem 2.5rem 2.5rem; align-self: center; }
+  .c-hero-eyebrow { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px; }
+  .c-hero-h1 { font-family: 'Playfair Display', serif; font-size: 30px; color: #4A3A18; line-height: 1.2; font-weight: 700; margin-bottom: 12px; }
+  .c-hero-h1 em { font-style: italic; color: #A67A28; font-weight: 400; }
+  .c-hero-sub { font-size: 13px; color: #7A6030; line-height: 1.75; max-width: 360px; margin-bottom: 20px; }
+  .c-hero-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+  .c-meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .c-meta-label { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; letter-spacing: 0.1em; text-transform: uppercase; }
+  .c-meta-val { font-family: 'Playfair Display', serif; font-size: 14px; color: #4A3A18; font-weight: 700; }
+  .c-hero-right { background: #C8A060; position: relative; overflow: hidden; }
+
+  /* Section helpers */
+  .m-sec { padding: 2.25rem 2.5rem; }
+  .m-sec-card { background: #F0E6C8; }
+  .m-sec-mid { background: #EDE0B8; }
+  .m-sec-green { background: #4A6A34; }
+  .m-label { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 6px; }
+  .m-label-lt { color: #C8E0B0; }
+  .m-divider { width: 36px; height: 2px; background: #C8963C; margin-bottom: 1rem; border-radius: 1px; }
+  .m-divider-grn { background: #8AAE7A; }
+  .m-h2 { font-family: 'Playfair Display', serif; font-size: 22px; color: #4A3A18; margin-bottom: 1rem; font-weight: 700; }
+  .m-h2-lt { color: #FAF5EA; }
+  .m-intro { font-size: 13px; color: #7A6030; line-height: 1.75; max-width: 580px; margin-bottom: 1.25rem; }
+  .m-intro-lt { color: #C8E0B0; }
+
+  /* Process timeline */
+  .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: #5A7A3C; border-radius: 8px; overflow: hidden; }
+  .tl-step { padding: 1.25rem 1.1rem 1.1rem; border-right: 1px solid #6B8E4E; position: relative; }
+  .tl-step:last-child { border-right: none; }
+  .tl-num { font-family: 'Courier Prime', monospace; font-size: 10px; color: #8AAE7A; letter-spacing: 0.12em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .tl-num::before { content: ''; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #C8963C; }
+  .tl-title { font-family: 'Playfair Display', serif; font-size: 14px; color: #FAF5EA; font-weight: 700; margin-bottom: 5px; }
+  .tl-time { font-family: 'Courier Prime', monospace; font-size: 9.5px; color: #C8963C; margin-bottom: 8px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .tl-desc { font-size: 11px; color: #C8E0B0; line-height: 1.6; }
+
+  /* Form */
+  .form-card { background: #FFFDF5; border: 1px solid #D8CEAA; border-radius: 10px; overflow: hidden; }
+  .form-stepper { background: #F5EED8; border-bottom: 1px solid #D8CEAA; padding: 1rem 1.5rem; display: flex; align-items: center; gap: 0; }
+  .form-step { display: flex; align-items: center; gap: 8px; flex: 1; }
+  .form-step-num { width: 22px; height: 22px; border-radius: 50%; background: #D8CEAA; color: #8B7A50; font-family: 'Courier Prime', monospace; font-size: 11px; display: flex; align-items: center; justify-content: center; font-weight: 700; flex-shrink: 0; }
+  .form-step.active .form-step-num { background: #C8963C; color: #FAF5EA; }
+  .form-step.done .form-step-num { background: #6B8E4E; color: #FAF5EA; }
+  .form-step-text { font-family: 'Courier Prime', monospace; font-size: 10.5px; color: #8B7A50; letter-spacing: 0.06em; text-transform: uppercase; }
+  .form-step.active .form-step-text { color: #4A3A18; }
+  .form-step.done .form-step-text { color: #4A6A34; }
+  .form-step-line { flex: 1; height: 1px; background: #D8CEAA; margin: 0 10px; }
+  .form-step.done + .form-step-line, .form-step-line.done { background: #6B8E4E; }
+
+  .form-body { padding: 1.75rem 1.75rem 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field-full { grid-column: span 2; }
+  .field-label { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; letter-spacing: 0.1em; text-transform: uppercase; }
+  .field-required { color: #C8963C; }
+  .field-input { font-family: 'Lora', serif; font-size: 13px; color: #4A3A18; background: #FAF5EA; border: 1px solid #D8CEAA; border-radius: 6px; padding: 9px 12px; outline: none; }
+  .field-input:focus { border-color: #C8963C; }
+  .field-input-filled { color: #4A3A18; }
+  .field-input::placeholder { color: #B8A878; }
+  .field-textarea { font-family: 'Lora', serif; font-size: 13px; color: #4A3A18; background: #FAF5EA; border: 1px solid #D8CEAA; border-radius: 6px; padding: 9px 12px; outline: none; resize: vertical; min-height: 90px; line-height: 1.6; }
+  .field-help { font-size: 11px; color: #8B7A50; font-style: italic; }
+
+  .chip-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-family: 'Courier Prime', monospace; font-size: 10.5px; color: #8B7A50; background: #FAF5EA; border: 1px solid #D8CEAA; padding: 5px 11px; border-radius: 14px; cursor: pointer; letter-spacing: 0.04em; }
+  .chip.sel { background: rgba(200,150,60,0.15); color: #A67A28; border-color: #C8963C; }
+  .chip.sel-grn { background: rgba(107,142,78,0.15); color: #4A6A34; border-color: #8AAE7A; }
+
+  .budget-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .budget-pill { font-family: 'Courier Prime', monospace; font-size: 11px; text-align: center; padding: 9px 8px; border-radius: 6px; background: #FAF5EA; border: 1px solid #D8CEAA; color: #8B7A50; cursor: pointer; }
+  .budget-pill.sel { background: rgba(200,150,60,0.15); color: #A67A28; border-color: #C8963C; font-weight: 700; }
+
+  .upload-zone { border: 1.5px dashed #C8963C; border-radius: 8px; padding: 1.25rem; background: rgba(200,150,60,0.05); text-align: center; }
+  .upload-zone-icon { font-size: 22px; color: #A67A28; margin-bottom: 6px; }
+  .upload-zone-title { font-family: 'Playfair Display', serif; font-size: 13px; color: #4A3A18; font-weight: 700; margin-bottom: 3px; }
+  .upload-zone-sub { font-size: 11px; color: #8B7A50; }
+  .upload-files { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
+  .upload-file { display: inline-flex; align-items: center; gap: 6px; font-family: 'Courier Prime', monospace; font-size: 10.5px; color: #4A3A18; background: #F0E6C8; border: 1px solid #D8CEAA; padding: 4px 10px; border-radius: 14px; }
+  .upload-file-x { color: #A67A28; cursor: pointer; }
+
+  .form-foot { background: #F5EED8; border-top: 1px solid #D8CEAA; padding: 1rem 1.75rem; display: flex; justify-content: space-between; align-items: center; }
+  .form-foot-note { font-family: 'Courier Prime', monospace; font-size: 10.5px; color: #8B7A50; }
+  .form-foot-actions { display: flex; gap: 8px; }
+  .btn-amber { font-family: 'Courier Prime', monospace; font-size: 11px; background: #C8963C; color: #FAF5EA; padding: 9px 20px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; }
+  .btn-ghost { font-family: 'Courier Prime', monospace; font-size: 11px; background: transparent; color: #8B7A50; border: 1px solid #D8CEAA; padding: 8px 18px; border-radius: 4px; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; }
+
+  /* Reassurance strip */
+  .reassure { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 1.5rem; }
+  .reassure-item { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; background: rgba(138,174,122,0.12); border: 1px solid rgba(138,174,122,0.3); border-radius: 6px; }
+  .reassure-mark { font-family: 'Courier Prime', monospace; font-size: 14px; color: #6B8E4E; font-weight: 700; flex-shrink: 0; line-height: 1.2; }
+  .reassure-title { font-family: 'Playfair Display', serif; font-size: 12.5px; color: #4A3A18; font-weight: 700; margin-bottom: 2px; }
+  .reassure-desc { font-size: 11px; color: #5A7A48; line-height: 1.55; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 8px; }
+  .faq-item { background: #FFFDF5; border: 1px solid #D8CEAA; border-radius: 8px; overflow: hidden; }
+  .faq-q { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+  .faq-q-text { font-family: 'Playfair Display', serif; font-size: 14px; color: #4A3A18; font-weight: 700; }
+  .faq-toggle { font-family: 'Courier Prime', monospace; font-size: 16px; color: #C8963C; line-height: 1; }
+  .faq-a { padding: 0 18px 16px; font-size: 12.5px; color: #6A5030; line-height: 1.75; border-top: 1px solid #E8DECC; padding-top: 12px; }
+  .faq-item.closed .faq-a { display: none; }
+
+  /* Pricing reference */
+  .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .price-card { background: #FFFDF5; border: 1px solid #D8CEAA; border-radius: 8px; padding: 16px 18px; }
+  .price-cat { font-family: 'Courier Prime', monospace; font-size: 10px; color: #A67A28; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .price-name { font-family: 'Playfair Display', serif; font-size: 15px; color: #4A3A18; font-weight: 700; margin-bottom: 6px; }
+  .price-range { font-family: 'Courier Prime', monospace; font-size: 13px; color: #4A6A34; font-weight: 700; margin-bottom: 8px; }
+  .price-lead { font-size: 11.5px; color: #7A6030; line-height: 1.55; }
+
+  /* Testimonial pull */
+  .pull { display: grid; grid-template-columns: 0.5fr 1fr; gap: 1.25rem; align-items: center; }
+  .pull-img { aspect-ratio: 1; background: #C8A060; border-radius: 8px; }
+  .pull-q { font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; color: #FAF5EA; line-height: 1.55; margin-bottom: 14px; }
+  .pull-q::before { content: '“'; font-size: 38px; color: #C8963C; font-style: normal; display: block; line-height: 0.5; margin-bottom: 6px; }
+  .pull-auth { font-family: 'Courier Prime', monospace; font-size: 12px; color: #C8963C; letter-spacing: 0.06em; }
+  .pull-proj { font-family: 'Courier Prime', monospace; font-size: 10.5px; color: #8AAE7A; margin-top: 3px; }
+
+  /* Footer */
+  .m-footer { background: #4A6A34; padding: 1.25rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+  .foot-logo { font-family: 'Playfair Display', serif; font-size: 13px; color: #FAF5EA; font-weight: 700; }
+  .foot-link { font-family: 'Courier Prime', monospace; font-size: 11px; color: #A8C898; letter-spacing: 0.07em; text-transform: uppercase; margin-left: 16px; }
+  .foot-copy { font-family: 'Courier Prime', monospace; font-size: 10px; color: #7A9E6A; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="label">Bridget J. Duffy — Commissions Page Mockup · Beam &amp; Plaster Palette</div>
+
+  <div class="m-nav">
+    <div class="m-nav-logo">Bridget J. Duffy</div>
+    <div class="m-nav-links">
+      <span class="m-nav-link">Portfolio</span>
+      <span class="m-nav-link">Shop</span>
+      <span class="m-nav-link active">Commissions</span>
+      <span class="m-nav-link">About</span>
+      <span class="m-nav-link">Contact</span>
+    </div>
+    <span class="m-nav-cta">Request commission</span>
+  </div>
+
+  <!-- Hero -->
+  <div class="c-hero">
+    <div class="c-hero-left">
+      <div class="c-hero-eyebrow">Custom commissions · By appointment</div>
+      <div class="c-hero-h1">Have a piece<br>in mind? <em>Let's<br>build it together.</em></div>
+      <div class="c-hero-sub">Every commission begins with a conversation. From a single side table to a full dining room — tell me what you're imagining and we'll work out the rest.</div>
+      <div class="c-hero-meta">
+        <div class="c-meta-item"><span class="c-meta-label">Lead time</span><span class="c-meta-val">8 – 16 weeks</span></div>
+        <div class="c-meta-item"><span class="c-meta-label">Starting from</span><span class="c-meta-val">$650</span></div>
+        <div class="c-meta-item"><span class="c-meta-label">Booked through</span><span class="c-meta-val">Mar 2026</span></div>
+      </div>
+    </div>
+    <div class="c-hero-right">
+      <svg width="100%" height="100%" viewBox="0 0 280 280" preserveAspectRatio="xMidYMid slice">
+        <rect width="280" height="280" fill="#B8822C"/>
+        <ellipse cx="140" cy="80" rx="110" ry="90" fill="#D4A848" opacity="0.4"/>
+        <rect x="60" y="160" width="160" height="14" rx="2" fill="#7A5418" opacity="0.55"/>
+        <rect x="78" y="174" width="124" height="80" rx="2" fill="#5A4018" opacity="0.45"/>
+        <rect x="84" y="180" width="6" height="68" fill="#3A2818" opacity="0.6"/>
+        <rect x="190" y="180" width="6" height="68" fill="#3A2818" opacity="0.6"/>
+        <line x1="60" y1="166" x2="220" y2="166" stroke="#FAF5EA" stroke-width="1" opacity="0.4"/>
+        <text x="140" y="262" text-anchor="middle" font-size="10" fill="#FAF5EA" opacity="0.55" font-family="Georgia,serif">[ workshop bench photo ]</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Process timeline -->
+  <div class="m-sec m-sec-card">
+    <div class="m-label">How it works</div><div class="m-divider"></div>
+    <div class="m-h2">From first sketch to final delivery</div>
+    <p class="m-intro">Most commissions follow the same four steps. You're looped in at every stage — no surprises, just steady progress and the occasional shop photo.</p>
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-num">Step 01</div>
+        <div class="tl-title">Consult</div>
+        <div class="tl-time">Week 1 · Free</div>
+        <div class="tl-desc">A 30-minute call to talk through your vision, the room, the budget, and the wood you're drawn to.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-num">Step 02</div>
+        <div class="tl-title">Design</div>
+        <div class="tl-time">Week 2 – 4 · 25% deposit</div>
+        <div class="tl-desc">Hand-drawn sketches, dimensioned drawings, and a small box of wood &amp; finish samples shipped to you.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-num">Step 03</div>
+        <div class="tl-title">Build</div>
+        <div class="tl-time">Week 4 – 14 · 50% mid-build</div>
+        <div class="tl-desc">Cut, joined, and finished by hand in the Burlington shop. You'll get progress photos every two weeks.</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-num">Step 04</div>
+        <div class="tl-title">Deliver</div>
+        <div class="tl-time">Final week · 25% on delivery</div>
+        <div class="tl-desc">White-glove delivery and installation in your home — anywhere in New England, by arrangement elsewhere.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing reference -->
+  <div class="m-sec">
+    <div class="m-label">A rough idea of cost</div><div class="m-divider"></div>
+    <div class="m-h2">Pricing reference</div>
+    <p class="m-intro">Every piece is priced to its drawings — wood species, joinery complexity, and finish all factor in. These ranges are typical for past commissioned work.</p>
+    <div class="pricing">
+      <div class="price-card">
+        <div class="price-cat">Smaller pieces</div>
+        <div class="price-name">Stools, side tables, boxes</div>
+        <div class="price-range">$650 – $1,400</div>
+        <div class="price-lead">8 – 10 weeks · single-piece designs, smaller stock</div>
+      </div>
+      <div class="price-card">
+        <div class="price-cat">Mid-scale</div>
+        <div class="price-name">Desks, dressers, sideboards</div>
+        <div class="price-range">$1,800 – $4,500</div>
+        <div class="price-lead">10 – 14 weeks · joinery-heavy, multi-component</div>
+      </div>
+      <div class="price-card">
+        <div class="price-cat">Heirloom</div>
+        <div class="price-name">Dining tables, beds, builds-ins</div>
+        <div class="price-range">$3,500 – $9,000+</div>
+        <div class="price-lead">12 – 16 weeks · slab-matched tops, hand-cut joinery</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Request form -->
+  <div class="m-sec m-sec-mid">
+    <div class="m-label">Tell me about your piece</div><div class="m-divider"></div>
+    <div class="m-h2">Request a commission</div>
+    <p class="m-intro">A few questions to help me prepare for our consult. Nothing's binding — we'll talk through the details together.</p>
+
+    <div class="form-card">
+      <div class="form-stepper">
+        <div class="form-step done"><div class="form-step-num">✓</div><div class="form-step-text">Your piece</div></div>
+        <div class="form-step-line done"></div>
+        <div class="form-step active"><div class="form-step-num">2</div><div class="form-step-text">Details &amp; budget</div></div>
+        <div class="form-step-line"></div>
+        <div class="form-step"><div class="form-step-num">3</div><div class="form-step-text">Your contact info</div></div>
+      </div>
+
+      <div class="form-body">
+        <div class="field field-full">
+          <span class="field-label">What kind of piece are you imagining? <span class="field-required">*</span></span>
+          <div class="chip-row">
+            <span class="chip">Dining table</span>
+            <span class="chip sel">Sideboard / credenza</span>
+            <span class="chip">Desk</span>
+            <span class="chip">Bookshelf</span>
+            <span class="chip">Bed frame</span>
+            <span class="chip">Coffee table</span>
+            <span class="chip">Seating</span>
+            <span class="chip">Built-in</span>
+            <span class="chip">Other</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Wood preference</span>
+          <div class="chip-row">
+            <span class="chip sel-grn">Black walnut</span>
+            <span class="chip">White oak</span>
+            <span class="chip">Cherry</span>
+            <span class="chip">Maple</span>
+            <span class="chip">Open to suggestion</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field-label">Approximate dimensions</span>
+          <input class="field-input" placeholder='e.g. 72" × 20" × 34"'/>
+          <span class="field-help">Length × depth × height — rough is fine.</span>
+        </div>
+
+        <div class="field field-full">
+          <span class="field-label">Budget range <span class="field-required">*</span></span>
+          <div class="budget-row">
+            <span class="budget-pill">Under $1,500</span>
+            <span class="budget-pill sel">$1,500 – $3,500</span>
+            <span class="budget-pill">$3,500 – $7,000</span>
+            <span class="budget-pill">$7,000+</span>
+          </div>
+        </div>
+
+        <div class="field field-full">
+          <span class="field-label">Tell me about the piece</span>
+          <textarea class="field-textarea" placeholder="What's the room like? Any references or other furniture you're trying to fit alongside? Anything that's inspired this idea?">Looking for something to anchor our dining room — long, low, two doors and three drawers. Inspired by your walnut sideboard from 2023, but in white oak to match the floors. Hoping to have it in place before the holidays.</textarea>
+        </div>
+
+        <div class="field field-full">
+          <span class="field-label">Reference photos or sketches <span style="color:#8B7A50;font-style:italic;text-transform:none;letter-spacing:0">(optional)</span></span>
+          <div class="upload-zone">
+            <div class="upload-zone-icon">↑</div>
+            <div class="upload-zone-title">Drop images here or click to browse</div>
+            <div class="upload-zone-sub">JPG, PNG, PDF · up to 10 files, 25MB total</div>
+            <div class="upload-files">
+              <span class="upload-file">📎 dining-room-current.jpg <span class="upload-file-x">×</span></span>
+              <span class="upload-file">📎 reference-pin-1.png <span class="upload-file-x">×</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-foot">
+        <span class="form-foot-note">Step 2 of 3 · auto-saved</span>
+        <div class="form-foot-actions">
+          <span class="btn-ghost">← Back</span>
+          <span class="btn-amber">Continue →</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reassure">
+      <div class="reassure-item">
+        <span class="reassure-mark">◆</span>
+        <div><div class="reassure-title">No commitment yet</div><div class="reassure-desc">The consult is free. Deposit isn't due until after design is approved.</div></div>
+      </div>
+      <div class="reassure-item">
+        <span class="reassure-mark">◆</span>
+        <div><div class="reassure-title">I respond within 48 hrs</div><div class="reassure-desc">Usually faster. Booked through March, but planning starts now.</div></div>
+      </div>
+      <div class="reassure-item">
+        <span class="reassure-mark">◆</span>
+        <div><div class="reassure-title">If it's not right, I'll say so</div><div class="reassure-desc">Some ideas suit another maker better. I'll be honest about the fit.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pull quote -->
+  <div class="m-sec m-sec-green">
+    <div class="m-label m-label-lt">From a recent commission</div><div class="m-divider m-divider-grn"></div>
+    <div class="pull">
+      <div class="pull-img">
+        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+          <rect width="100" height="100" fill="#B8822C"/>
+          <rect x="14" y="50" width="72" height="6" fill="#7A5418" opacity="0.6"/>
+          <rect x="20" y="56" width="60" height="34" fill="#5A4018" opacity="0.5"/>
+          <text x="50" y="98" text-anchor="middle" font-size="6" fill="#FAF5EA" opacity="0.6" font-family="Georgia,serif">[ client photo ]</text>
+        </svg>
+      </div>
+      <div>
+        <div class="pull-q">From the first call I felt like Bridget understood what we were after. The sideboard arrived and the room finally made sense — like it had always been waiting for it.</div>
+        <div class="pull-auth">— James &amp; Lori T., Stowe, VT</div>
+        <div class="pull-proj">White oak sideboard · Commissioned 2024 · 14 weeks</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="m-sec">
+    <div class="m-label">Common questions</div><div class="m-divider"></div>
+    <div class="m-h2">Frequently asked</div>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-text">How long does a commission usually take?</span><span class="faq-toggle">−</span></div>
+        <div class="faq-a">Most pieces ship 8 – 16 weeks after design approval, depending on scale and joinery. Dining tables and built-ins sit at the longer end; smaller pieces like side tables or boxes can ship inside two months. I'm currently booking projects to begin in March 2026.</div>
+      </div>
+      <div class="faq-item closed">
+        <div class="faq-q"><span class="faq-q-text">Can I see the wood before you build?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"></div>
+      </div>
+      <div class="faq-item closed">
+        <div class="faq-q"><span class="faq-q-text">Do you ship outside New England?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"></div>
+      </div>
+      <div class="faq-item closed">
+        <div class="faq-q"><span class="faq-q-text">What's the deposit structure?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"></div>
+      </div>
+      <div class="faq-item closed">
+        <div class="faq-q"><span class="faq-q-text">Can I supply my own wood (a tree from our property)?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"></div>
+      </div>
+      <div class="faq-item closed">
+        <div class="faq-q"><span class="faq-q-text">What if I'm not sure what I want yet?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"></div>
+      </div>
+      <div class="faq-item closed">
+        <div class="faq-q"><span class="faq-q-text">Do you offer repairs or restoration?</span><span class="faq-toggle">+</span></div>
+        <div class="faq-a"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="m-footer">
+    <div class="foot-logo">Bridget J. Duffy</div>
+    <div><span class="foot-link">Portfolio</span><span class="foot-link">Shop</span><span class="foot-link">Commissions</span><span class="foot-link">About</span><span class="foot-link">Contact</span></div>
+    <span class="foot-copy">© 2025 Bridget J. Duffy</span>
+  </div>
+</div>
+</body>
+</html>

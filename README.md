@@ -8,4 +8,4 @@ Next.js + Tailwind site for BJD Woodworking.
 - `npm run build` — production build
 - `npm run start` — run the built app
 - `npm run lint` — lint
-- `npm run design-system:docs` — regenerate `src/hobbit-component-library/index.md`
+- `npm run hobbit-library:docs` — regenerate `src/hobbit-library/index.md`

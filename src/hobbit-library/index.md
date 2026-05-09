@@ -1,15 +1,15 @@
 <!--
 This file is generated. DO NOT EDIT BY HAND.
-Run: npm run design-system:docs
+Run: npm run hobbit-library:docs
 -->
 
-# Design System
+# Hobbit Library
 
 ## Overview
 
-This file is regenerated from the repo. **Process, directory layout, and workflow** live in [`docs/design-system-plan.md`](docs/design-system-plan.md) next to this package in the repo.
+This file is regenerated from the repo. **Process, directory layout, and workflow** live in [`docs/hobbit-library-plan.md`](docs/hobbit-library-plan.md) next to this package in the repo.
 
-Design tokens are defined with Tailwind v4 **`@theme inline`** in CSS (for example `src/app/globals.css` and `src/hobbit-component-library/styles/`). Components live in `src/hobbit-component-library/components/` and must export a default React component and a named `meta` object.
+Design tokens are defined with Tailwind v4 **`@theme inline`** in CSS (for example `src/app/globals.css` and `src/hobbit-library/styles/`). Components live in `src/hobbit-library/components/` and must export a default React component and a named `meta` object.
 
 ### Component meta contract
 
@@ -32,7 +32,7 @@ export const meta = {
 }
 ```
 
-### `src/hobbit-component-library/styles/hobbit-hole-theme.css`
+### `src/hobbit-library/styles/hobbit-hole-theme.css`
 
 ```json
 {
@@ -63,4 +63,4 @@ export const meta = {
 
 ## Components
 
-_Components appear to be registered, but this scaffold generator does not yet evaluate TypeScript registries. Extend `src/hobbit-component-library/scripts/generate-design-system-docs.mjs` when you begin porting components._
+_Components appear to be registered, but this scaffold generator does not yet evaluate TypeScript registries. Extend `src/hobbit-library/scripts/generate-hobbit-library-docs.mjs` when you begin porting components._

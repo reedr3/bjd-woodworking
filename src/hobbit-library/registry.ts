@@ -1,38 +1,37 @@
-export type DesignSystemComponentMeta = {
+export type HobbitLibraryComponentMeta = {
   name: string;
   description?: string;
   variants?: string[];
 };
 
-export type DesignSystemRegistryEntry = {
+export type HobbitLibraryRegistryEntry = {
   /**
-   * Path to the component file relative to repo root, e.g. `src/hobbit-component-library/components/ButtonPrimary.tsx`.
+   * Path to the component file relative to repo root, e.g. `src/hobbit-library/components/ButtonPrimary.tsx`.
    * This is used by docs tooling and keeps the registry explicit (no magic imports).
    */
   filePath: string;
-  meta: DesignSystemComponentMeta;
+  meta: HobbitLibraryComponentMeta;
 };
 
 /**
- * Explicit registry of design-system components.
+ * Explicit registry of hobbit-library components.
  *
  * Keep this list intentionally manual for reliability in Next.js builds and for doc generation.
- * Components themselves should live in `src/hobbit-component-library/components/` and export:
+ * Components themselves should live in `src/hobbit-library/components/` and export:
  *
  * ```tsx
  * export const meta = { name: 'ButtonPrimary', description: '...', variants: ['...'] }
  * export default function ButtonPrimary() { ... }
  * ```
  */
-export const registry: DesignSystemRegistryEntry[] = [
+export const registry: HobbitLibraryRegistryEntry[] = [
   {
-    filePath: "src/hobbit-component-library/components/HobbitHolePreview.tsx",
+    filePath: "src/hobbit-library/components/HobbitHolePreview.tsx",
     meta: {
       name: "HobbitHolePreview",
       description:
-        "Hobbit Hole design system — colors, type, navigation, cards, and layout primitives ported from Refine HTML Mockup.",
+        "Hobbit Hole library — colors, type, navigation, cards, and layout primitives ported from Refine HTML Mockup.",
       variants: ["full-showcase"],
     },
   },
 ];
-

@@ -19,18 +19,18 @@ import {
 
 export const meta = {
   name: "HobbitHolePreview",
-  description: "Hobbit Hole design system — colors, type, navigation, cards, and layout primitives.",
+  description: "Hobbit Hole library — colors, type, navigation, cards, and layout primitives.",
   variants: ["full-showcase"],
 };
 
 export default function HobbitHolePreview() {
   return (
     <HobbitPageShell>
-      <HobbitBanner>Hobbit Hole Design System · Artisan Portfolio Theme</HobbitBanner>
+      <HobbitBanner>Hobbit Hole Library · Artisan Portfolio Theme</HobbitBanner>
 
       <div className="mx-auto max-w-[1200px] p-8">
         <HobbitHero eyebrow="Design Foundation" title="Hobbit Hole">
-          A warm, earthy design system for showcasing handcrafted furniture and woodworking. Built for trust,
+          A warm, earthy component library for showcasing handcrafted furniture and woodworking. Built for trust,
           craftsmanship, and natural beauty.
         </HobbitHero>
 

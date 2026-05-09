@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "design-system:docs": "node src/hobbit-component-library/scripts/generate-design-system-docs.mjs"
+    "hobbit-library:docs": "node src/hobbit-library/scripts/generate-hobbit-library-docs.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

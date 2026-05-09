@@ -1,136 +1,88 @@
-# Port Design System — Plan & Conventions
+# Design System — Plan & Conventions
 
 ## Overview
 
-This document describes the structure, conventions, and maintenance workflow for the Port design system. It is the brief for Cursor when setting up and maintaining the design system within this Next.js project.
+Human-maintained brief for **BJD Woodworking**: how the design system is organized, how to extend it, and how docs stay in sync. For **extracted token values and registry status**, run `npm run design-system:docs` and read the generated **`src/design-system/index.md`** (do not edit that file by hand).
 
 ---
 
-## Directory Structure
+## Two documents
+
+| Document | Role |
+|----------|------|
+| **`design-system-plan.md`** (this file) | Process, directory layout, conventions, when to regenerate docs. |
+| **`src/design-system/index.md`** | Factual snapshot: **`@theme inline`** token map from CSS, registry notes, `meta` contract snippet. |
+
+---
+
+## Directory layout
 
 ```
-port/
-  src/
-    design-system/
-      components/         # Reusable UI components
-      index.md            # This file (Cursor maintains this)
-  tailwind.config.js      # Single source of truth for design tokens
+tailwind.config.js              # Minimal v4 stub (no theme tokens here)
+src/
   app/
+    globals.css                 # @import "tailwindcss", @source, @theme inline (app tokens)
     design-system/
-      page.tsx            # Dev-only visual index page
+      page.tsx                  # Dev-only /design-system page
+  design-system/
+    registry.ts                 # Manual list of showcase components (used by docs tooling)
+    index.md                    # Generated — npm run design-system:docs
+    styles/                     # Theme CSS (@theme inline, e.g. hobbit-theme.css)
+    components/                 # Design-system UI (flat files and subfolders allowed)
 ```
 
 ---
 
-## Design Tokens
+## Design tokens
 
-All design tokens (colors, typography, spacing, border radius, shadows, etc.) are defined in `tailwind.config.js` under the `theme.extend` block. This is the **single source of truth**. No hardcoded values should appear in components — always reference Tailwind classes or CSS variables derived from the config.
+Tokens are **Tailwind v4 `@theme inline`** in CSS (`src/app/globals.css` and `src/design-system/styles/`). Use **`@source`** in `globals.css` for content paths. Put shared literals on **`:root`** (or equivalent) when utilities need `var(...)`, then map them inside `@theme inline`.
 
-Example structure:
-```js
-// tailwind.config.js
-theme: {
-  extend: {
-    colors: {
-      // e.g. 'wood-dark': '#3B2A1A',
-    },
-    fontFamily: {
-      // e.g. 'display': ['...', 'serif'],
-    },
-    spacing: {
-      // custom spacing if needed
-    },
-  }
-}
-```
+**Current values:** see the **Tokens** section in **`src/design-system/index.md`** after running `npm run design-system:docs`.
 
 ---
 
 ## Components
 
-Each component lives in `src/design-system/components/` as its own `.tsx` file. Components should:
+Live under **`src/design-system/components/`** (one file or a subfolder with a barrel export). Register showcase entries in **`src/design-system/registry.ts`**. Each registered preview should export a default component and a named **`meta`** object (`name`, optional `description`, optional `variants`). The exact shape is repeated in **`src/design-system/index.md`** (generated).
 
-- Accept props for all meaningful variations
-- Use only Tailwind classes for styling (no inline styles)
-- Export a default component and a named `meta` object describing the component (see below)
-
-### Component Meta Convention
-
-Each component file should export a `meta` object so the index page can render it automatically:
-
-```tsx
-export const meta = {
-  name: 'ButtonPrimary',
-  description: 'Primary call-to-action button',
-  variants: ['default', 'hover', 'disabled'],
-}
-```
+Use Tailwind utilities where possible; **narrow inline `style` is acceptable** for dynamic demos (for example swatches driven by a hex prop).
 
 ---
 
-## Dev-Only Design System Route
+## `/design-system` route
 
-The `/design-system` route (`app/design-system/page.tsx`) renders all components visually, grouped by category. It should:
+**`src/app/design-system/page.tsx`** is **development only** (`notFound()` when `NODE_ENV !== 'development'`). It is a living preview, not an exhaustive auto-catalog of every file in `components/`.
 
-- Only be accessible in development (`process.env.NODE_ENV === 'development'`)
-- Import all components from `src/design-system/components/`
-- Show each component with its name, description, and all variants
-- Show a design tokens section (colors, type scale, spacing) derived from the Tailwind config
+**Visual check:** run `npm run dev` and open `http://localhost:3000/design-system`.
 
-To export a static snapshot for sharing:
+**Static snapshot** (with dev server on `localhost:3000`):
+
 ```bash
-# With the dev server running on localhost:3000
 single-file --browser-wait-until networkidle0 http://localhost:3000/design-system design-system-snapshot.html
 ```
 
 ---
 
-## design-system.md — AI Reference Document
+## Regenerating `index.md`
 
-`src/design-system/index.md` is the AI-readable summary of the design system. It is **never hand-edited**. Cursor regenerates it whenever the design system changes.
+After changing **`@theme inline`** (or supporting `:root` variables), **`registry.ts`**, or anything the generator should reflect:
 
-### What it contains
+```bash
+npm run design-system:docs
+```
 
-- Design intent and aesthetic direction (written once, updated if direction changes)
-- All token values extracted from `tailwind.config.js`
-- A list of all components with their props, variants, and intended usage
-- Any design decisions and the reasoning behind them
-
-### When Cursor should update it
-
-Cursor should regenerate or update `index.md` whenever:
-- A new token is added or changed in `tailwind.config.js`
-- A new component is added to `src/design-system/components/`
-- An existing component's props or variants change
-- A design decision is made that affects usage conventions
-
-### Prompt to use with Cursor
-
-When updating the design system, use this prompt:
-
-> "I've just added/changed [X]. Please update `src/design-system/index.md` to reflect this change, keeping all existing content intact and adding a new entry for [X] with its token values / props / usage notes."
+Implementation: **`scripts/generate-design-system-docs.mjs`**. Extend that script when you need richer output (for example parsing **`registry.ts`** for a full component list).
 
 ---
 
-## Workflow Summary
+## Conventions
 
-1. **Make a change** — edit `tailwind.config.js` or add/modify a component
-2. **Ask Cursor to update** `src/design-system/index.md`
-3. **View the result** at `localhost:3000/design-system` in the running dev server
-4. **Export a snapshot** with SingleFile CLI if you need to share a visual version
-
----
-
-## Conventions & Rules
-
-- Never hardcode color values, font names, or spacing values in components
-- Always reference Tailwind config tokens via utility classes
-- New components must include a `meta` export
-- The `/design-system` route must be dev-only — add a redirect or 404 for production
-- `index.md` is generated, never hand-edited
+- Prefer design-system tokens (from `@theme inline`) over magic values in app UI.
+- New showcase components: add **`meta`**, register in **`registry.ts`**, run **`npm run design-system:docs`**.
+- Do not hand-edit **`src/design-system/index.md`**.
 
 ---
 
 ## Notes for Cursor
 
-When working on Port, always read `src/design-system/index.md` first for design context. When building new pages or components for Port, use only components and tokens from the design system. If a new pattern is needed that doesn't exist yet, create it in `src/design-system/components/` first, then use it.
+Before UI or design-system work, read **`src/design-system/index.md`** (run **`npm run design-system:docs`** if it may be stale). Use this **`design-system-plan.md`** for workflow and layout. New primitives belong under **`src/design-system/components/`** first, then consume them from app routes.

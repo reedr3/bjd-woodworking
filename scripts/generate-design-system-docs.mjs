@@ -1,13 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { createRequire } from "node:module";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, "..");
-
-const require = createRequire(import.meta.url);
 
 function safeReadFile(filePath) {
   try {
@@ -17,34 +14,87 @@ function safeReadFile(filePath) {
   }
 }
 
-function loadTailwindConfig() {
-  const configPath = path.join(repoRoot, "tailwind.config.js");
-  try {
-    // tailwind.config.js is CommonJS by convention
-    // eslint-disable-next-line import/no-commonjs
-    const config = require(configPath);
-    return { config, configPath, error: null };
-  } catch (error) {
-    return { config: null, configPath, error };
+/**
+ * Extract inner bodies of every `@theme inline { ... }` block (brace-balanced).
+ */
+function extractAtThemeInlineBodies(css) {
+  const bodies = [];
+  const needle = "@theme inline";
+  let pos = 0;
+  while (pos < css.length) {
+    const i = css.indexOf(needle, pos);
+    if (i === -1) break;
+    let j = i + needle.length;
+    while (j < css.length && /\s/.test(css[j])) j += 1;
+    if (css[j] !== "{") {
+      pos = j + 1;
+      continue;
+    }
+    j += 1;
+    let depth = 1;
+    const start = j;
+    while (j < css.length && depth > 0) {
+      const c = css[j];
+      if (c === "{") depth += 1;
+      else if (c === "}") depth -= 1;
+      j += 1;
+    }
+    if (depth === 0) {
+      bodies.push(css.slice(start, j - 1));
+    }
+    pos = j;
   }
+  return bodies;
 }
 
-function extractExtendTokens(tailwindConfig) {
-  const extend = tailwindConfig?.theme?.extend ?? {};
-  const tokenKeys = [
-    "colors",
-    "fontFamily",
-    "fontSize",
-    "spacing",
-    "borderRadius",
-    "boxShadow",
-  ];
-
-  const tokens = {};
-  for (const key of tokenKeys) {
-    tokens[key] = extend?.[key] ?? {};
+function parseThemeDeclarations(body) {
+  const out = {};
+  const cleaned = body.replace(/\/\*[\s\S]*?\*\//g, "");
+  const declRe = /--([\w-]+)\s*:\s*([^;]+);/g;
+  let m = declRe.exec(cleaned);
+  while (m) {
+    out[`--${m[1]}`] = m[2].trim().replace(/\s+/g, " ");
+    m = declRe.exec(cleaned);
   }
-  return tokens;
+  return out;
+}
+
+function collectThemeTokensByFile() {
+  const styleDir = path.join(repoRoot, "src", "design-system", "styles");
+  const cssPaths = [path.join(repoRoot, "src", "app", "globals.css")];
+
+  if (fs.existsSync(styleDir)) {
+    const names = fs.readdirSync(styleDir).filter((f) => f.endsWith(".css")).sort();
+    for (const name of names) {
+      cssPaths.push(path.join(styleDir, name));
+    }
+  }
+
+  /** @type {{ relativePath: string, variables: Record<string, string> }[]} */
+  const byFile = [];
+
+  for (const abs of cssPaths) {
+    const source = safeReadFile(abs);
+    if (!source) continue;
+    const bodies = extractAtThemeInlineBodies(source);
+    if (bodies.length === 0) continue;
+    const variables = {};
+    for (const body of bodies) {
+      Object.assign(variables, parseThemeDeclarations(body));
+    }
+    if (Object.keys(variables).length === 0) continue;
+    byFile.push({
+      relativePath: path.relative(repoRoot, abs).split(path.sep).join("/"),
+      variables,
+    });
+  }
+
+  return byFile;
+}
+
+function formatJsonBlock(value) {
+  const json = JSON.stringify(value, null, 2);
+  return ["```json", json, "```"].join("\n");
 }
 
 function inferRegistryStatus(registrySource) {
@@ -60,12 +110,7 @@ function inferRegistryStatus(registrySource) {
   return { kind: "present-unknown" };
 }
 
-function formatJsonBlock(value) {
-  const json = JSON.stringify(value, null, 2);
-  return ["```json", json, "```"].join("\n");
-}
-
-function generateMarkdown({ tokens, registryStatus }) {
+function generateMarkdown({ themeByFile, registryStatus }) {
   const lines = [];
 
   lines.push("<!--");
@@ -78,7 +123,11 @@ function generateMarkdown({ tokens, registryStatus }) {
   lines.push("## Overview");
   lines.push("");
   lines.push(
-    "Design tokens may live in `tailwind.config.js` under `theme.extend` and/or in CSS under `src/design-system/styles/` (for example `hobbit-theme.css` with `@theme inline`). Components live in `src/design-system/components/` and must export a default React component and a named `meta` object."
+    "This file is regenerated from the repo. **Process, directory layout, and workflow** live in [`design-system-plan.md`](../../design-system-plan.md) at the repository root."
+  );
+  lines.push("");
+  lines.push(
+    "Design tokens are defined with Tailwind v4 **`@theme inline`** in CSS (for example `src/app/globals.css` and `src/design-system/styles/`). Components live in `src/design-system/components/` and must export a default React component and a named `meta` object."
   );
   lines.push("");
   lines.push("### Component meta contract");
@@ -92,23 +141,17 @@ function generateMarkdown({ tokens, registryStatus }) {
   lines.push("```");
   lines.push("");
 
-  lines.push("## Tokens (`tailwind.config.js` → `theme.extend`)");
+  lines.push("## Tokens (`@theme inline` in CSS)");
   lines.push("");
 
-  const allEmpty = Object.values(tokens).every(
-    (section) => section && typeof section === "object" && Object.keys(section).length === 0
-  );
-
-  if (allEmpty) {
-    lines.push(
-      "_No tokens have been ported yet. Populate `theme.extend` in `tailwind.config.js` and re-run the generator._"
-    );
+  if (themeByFile.length === 0) {
+    lines.push("_No `@theme inline` blocks with custom properties were found. Add them under `src/app/globals.css` or `src/design-system/styles/`._");
     lines.push("");
   } else {
-    for (const [section, value] of Object.entries(tokens)) {
-      lines.push(`### ${section}`);
+    for (const { relativePath, variables } of themeByFile) {
+      lines.push(`### \`${relativePath}\``);
       lines.push("");
-      lines.push(formatJsonBlock(value));
+      lines.push(formatJsonBlock(variables));
       lines.push("");
     }
   }
@@ -133,32 +176,11 @@ function generateMarkdown({ tokens, registryStatus }) {
     lines.push("");
   }
 
-  lines.push("## Snapshot export (SingleFile)");
-  lines.push("");
-  lines.push("With the dev server running on `localhost:3000`:");
-  lines.push("");
-  lines.push("```bash");
-  lines.push(
-    "single-file --browser-wait-until networkidle0 http://localhost:3000/design-system design-system-snapshot.html"
-  );
-  lines.push("```");
-  lines.push("");
-
   return lines.join("\n");
 }
 
 function main() {
-  const { config, configPath, error } = loadTailwindConfig();
-  if (!config) {
-    // eslint-disable-next-line no-console
-    console.error(`Failed to load Tailwind config at ${configPath}`);
-    // eslint-disable-next-line no-console
-    console.error(error);
-    process.exitCode = 1;
-    return;
-  }
-
-  const tokens = extractExtendTokens(config);
+  const themeByFile = collectThemeTokensByFile();
 
   const registryPath = path.join(repoRoot, "src", "design-system", "registry.ts");
   const registrySource = safeReadFile(registryPath);
@@ -166,11 +188,9 @@ function main() {
 
   const outPath = path.join(repoRoot, "src", "design-system", "index.md");
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
-  fs.writeFileSync(outPath, generateMarkdown({ tokens, registryStatus }), "utf8");
+  fs.writeFileSync(outPath, generateMarkdown({ themeByFile, registryStatus }), "utf8");
 
-  // eslint-disable-next-line no-console
   console.log(`Wrote ${path.relative(repoRoot, outPath)}`);
 }
 
 main();
-

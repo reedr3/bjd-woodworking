@@ -20,10 +20,13 @@ export default function DesignSystemPage() {
           <h2 className="text-xl font-semibold tracking-tight">Status</h2>
           <ul className="list-disc space-y-2 pl-5 text-sm text-neutral-700">
             <li>
-              Hobbit Hole tokens live in{" "}
+              Design tokens use Tailwind v4{" "}
+              <code className="font-mono">@theme inline</code> in CSS: base app theme in{" "}
+              <code className="font-mono">src/app/globals.css</code>, Hobbit Hole in{" "}
               <code className="font-mono">src/design-system/styles/hobbit-theme.css</code>{" "}
-              (<code className="font-mono">@theme inline</code> and CSS variables). Base app tokens may also live in{" "}
-              <code className="font-mono">tailwind.config.js</code> under <code className="font-mono">theme.extend</code>.
+              (with <code className="font-mono">:root</code> variables where needed).{" "}
+              <code className="font-mono">tailwind.config.js</code> is a minimal stub; content paths use{" "}
+              <code className="font-mono">@source</code> in <code className="font-mono">globals.css</code>.
             </li>
             <li>
               Components live in{" "}

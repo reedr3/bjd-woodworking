@@ -4,14 +4,17 @@ import {
   HobbitColorGroup,
   HobbitColorSwatch,
   HobbitComponentShowcase,
+  HobbitFooter,
   HobbitHero,
   HobbitNav,
   HobbitPageShell,
   HobbitPrinciple,
+  HobbitProcessSteps,
   HobbitSection,
   HobbitSpacingDemo,
   HobbitSubsectionTitle,
   HobbitTag,
+  HobbitTestimonial,
   HobbitTypeScale,
   HobbitTypeSpecimen,
   HobbitPortfolioCard,
@@ -27,6 +30,19 @@ export default function HobbitHolePreview() {
           A warm, earthy component library for showcasing handcrafted furniture and woodworking. Built for trust,
           craftsmanship, and natural beauty.
         </HobbitHero>
+
+        <HobbitComponentShowcase title="Hero (split layout)">
+          <HobbitHero
+            layout="split"
+            eyebrow="Handcrafted furniture"
+            title="Made to last a lifetime"
+            copy="Every piece is designed around your space and built by hand in our workshop."
+            buttons={[
+              { label: "Start a commission", variant: "primary", href: "#" },
+              { label: "View the work", variant: "ghost", href: "#" },
+            ]}
+          />
+        </HobbitComponentShowcase>
 
         <HobbitSection title="Color Palette" eyebrow="Foundation">
           <HobbitColorGroup title="Foundation — Cream &amp; Sand">
@@ -103,17 +119,22 @@ export default function HobbitHolePreview() {
             <HobbitNav
               brand="Bridget J. Duffy"
               links={[
-                { label: "Portfolio", active: true },
-                { label: "Shop" },
-                { label: "About" },
+                { label: "Portfolio", href: "#", active: true },
+                { label: "Shop", href: "#" },
+                { label: "Commissions", href: "#" },
+                { label: "About", href: "#" },
+                { label: "Contact", href: "#" },
               ]}
-              cta={{ label: "Request commission" }}
+              cta={{ label: "Request Commission", href: "#" }}
             />
           </HobbitComponentShowcase>
 
           <HobbitComponentShowcase title="Buttons">
             <div className="flex flex-wrap gap-4">
               <HobbitButton variant="primary">Primary Button</HobbitButton>
+              <HobbitButton href="#" variant="primary">
+                Primary link
+              </HobbitButton>
               <HobbitButton variant="ghost">Ghost Button</HobbitButton>
               <HobbitButton variant="outline-gold">Load More</HobbitButton>
             </div>
@@ -130,10 +151,64 @@ export default function HobbitHolePreview() {
 
           <HobbitComponentShowcase title="Portfolio Card">
             <HobbitPortfolioCard
-              category="Tables"
               title="Heirloom walnut dining table"
-              meta="Black Walnut · 96″ × 42″"
-              tag="Commissioned"
+              spec="Black Walnut · 96″ × 42″"
+              tag="Walnut"
+            />
+          </HobbitComponentShowcase>
+
+          <HobbitComponentShowcase title="Process steps">
+            <HobbitProcessSteps
+              eyebrow="How it works"
+              heading="Commission a piece"
+              subtext="Every commission starts with a conversation."
+              steps={[
+                { number: "01", title: "Consult", description: "We discuss your vision and space." },
+                { number: "02", title: "Design", description: "Sketches before any wood is cut." },
+                { number: "03", title: "Build", description: "Handcrafted with progress updates." },
+                { number: "04", title: "Deliver", description: "Delivery and installation in your home." },
+              ]}
+              cta={{ label: "Start your commission", href: "#", variant: "primary" }}
+            />
+          </HobbitComponentShowcase>
+
+          <HobbitComponentShowcase title="Testimonials (grid)">
+            <HobbitTestimonial
+              eyebrow="What clients say"
+              heading="Testimonials"
+              variant="grid"
+              items={[
+                {
+                  quote: "The dining table exceeded every expectation.",
+                  author: "Sarah M.",
+                  project: "Custom walnut dining table",
+                },
+                {
+                  quote: "Nothing comes close to the quality or care.",
+                  author: "James & Lori T.",
+                  project: "White oak sideboard",
+                },
+                {
+                  quote: "The process was seamless from first sketch to delivery.",
+                  author: "Rachel K.",
+                  project: "Cherry writing desk",
+                },
+              ]}
+            />
+          </HobbitComponentShowcase>
+
+          <HobbitComponentShowcase title="Footer">
+            <HobbitFooter
+              brand="Bridget J. Duffy"
+              tagline="Handmade with love since 2009"
+              links={[
+                { label: "Portfolio", href: "#" },
+                { label: "Shop", href: "#" },
+                { label: "Commissions", href: "#" },
+                { label: "About", href: "#" },
+                { label: "Contact", href: "#" },
+              ]}
+              copyright="© 2026 Bridget J. Duffy. All rights reserved."
             />
           </HobbitComponentShowcase>
         </HobbitSection>

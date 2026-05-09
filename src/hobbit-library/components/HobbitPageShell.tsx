@@ -7,7 +7,7 @@ export const meta = {
 
 export function HobbitPageShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-hobbit-cream-base font-hobbit-body text-hobbit-wood-darkest antialiased">
+    <div className="min-h-screen bg-hobbit-cream-light font-hobbit-body text-hobbit-wood-darkest antialiased">
       {children}
     </div>
   );

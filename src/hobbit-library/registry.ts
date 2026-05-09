@@ -35,10 +35,18 @@ export const registry: HobbitLibraryRegistryEntry[] = [
     },
   },
   {
+    filePath: "src/hobbit-library/components/HobbitFooter.tsx",
+    meta: {
+      name: "HobbitFooter",
+      description: "Site footer with brand, tagline, and navigation links in forest tones.",
+    },
+  },
+  {
     filePath: "src/hobbit-library/components/HobbitHero.tsx",
     meta: {
       name: "HobbitHero",
-      description: "Large hero block with eyebrow, title, and supporting copy on a warm bordered panel.",
+      description: "Large hero with centered or split layout: eyebrow, title, copy, and optional CTAs.",
+      variants: ["centered", "split"],
     },
   },
   {
@@ -59,7 +67,15 @@ export const registry: HobbitLibraryRegistryEntry[] = [
     filePath: "src/hobbit-library/components/HobbitPortfolioCard.tsx",
     meta: {
       name: "HobbitPortfolioCard",
-      description: "Project or piece card with category, title, optional image slot, and tag.",
+      description: "Project or piece card with 4:3 image, wood tag, title, and spec line below the image.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitProcessSteps.tsx",
+    meta: {
+      name: "HobbitProcessSteps",
+      description: "Numbered process step strip for commission or how-it-works flows.",
+      variants: ["horizontal", "vertical"],
     },
   },
   {
@@ -68,6 +84,14 @@ export const registry: HobbitLibraryRegistryEntry[] = [
       name: "HobbitTag",
       description: "Small pill label for categories, status, or metadata on cards and lists.",
       variants: ["forest", "gold"],
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitTestimonial.tsx",
+    meta: {
+      name: "HobbitTestimonial",
+      description: "Customer quote display in grid or single featured layout.",
+      variants: ["grid", "featured"],
     },
   },
 ];

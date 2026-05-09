@@ -1,4 +1,5 @@
 import { cn } from "@/hobbit-library/utils/utils";
+import { HobbitButton } from "./HobbitButton";
 
 export const meta = {
   name: "HobbitNav",
@@ -22,7 +23,7 @@ export function HobbitNav({ brand, links, cta, className }: HobbitNavProps) {
   return (
     <nav
       className={cn(
-        "flex h-[52px] items-center justify-between rounded-lg bg-hobbit-forest-base px-8",
+        "flex h-[52px] items-center justify-between rounded-lg bg-hobbit-forest-dark px-8",
         className,
       )}
       aria-label="Main"
@@ -38,7 +39,7 @@ export function HobbitNav({ brand, links, cta, className }: HobbitNavProps) {
                 href={link.href}
                 className={cn(
                   "font-hobbit-ui text-[11px] uppercase tracking-[0.08em] outline-none transition-colors",
-                  "focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-hobbit-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-hobbit-forest-base",
+                  "focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-hobbit-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-hobbit-forest-dark",
                   link.active
                     ? "border-b-[1.5px] border-hobbit-gold-base pb-0.5 text-hobbit-cream-light"
                     : "text-hobbit-forest-pale hover:text-hobbit-cream-light",
@@ -62,16 +63,13 @@ export function HobbitNav({ brand, links, cta, className }: HobbitNavProps) {
         ))}
       </ul>
       {cta.href ? (
-        <a
+        <HobbitButton
           href={cta.href}
-          className={cn(
-            "font-hobbit-ui rounded px-3.5 py-1.5 text-[11px] uppercase tracking-[0.05em]",
-            "bg-hobbit-gold-base text-hobbit-cream-light outline-none",
-            "hover:bg-hobbit-gold-light focus-visible:ring-2 focus-visible:ring-hobbit-cream-light focus-visible:ring-offset-2 focus-visible:ring-offset-hobbit-forest-base",
-          )}
+          variant="primary"
+          className="px-3.5 py-1.5 focus-visible:ring-offset-hobbit-forest-dark"
         >
           {cta.label}
-        </a>
+        </HobbitButton>
       ) : (
         <span
           className={cn(

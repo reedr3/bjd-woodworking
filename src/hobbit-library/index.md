@@ -76,10 +76,16 @@ The registry is generated into [`src/hobbit-library/registry.ts`](src/hobbit-lib
 - **Description:** Action button with gold primary, ghost, and outline-gold styles.
 - **Variants:** `primary`, `ghost`, `outline-gold`
 
+### `HobbitFooter`
+
+- **File:** [`src/hobbit-library/components/HobbitFooter.tsx`](src/hobbit-library/components/HobbitFooter.tsx)
+- **Description:** Site footer with brand, tagline, and navigation links in forest tones.
+
 ### `HobbitHero`
 
 - **File:** [`src/hobbit-library/components/HobbitHero.tsx`](src/hobbit-library/components/HobbitHero.tsx)
-- **Description:** Large hero block with eyebrow, title, and supporting copy on a warm bordered panel.
+- **Description:** Large hero with centered or split layout: eyebrow, title, copy, and optional CTAs.
+- **Variants:** `centered`, `split`
 
 ### `HobbitNav`
 
@@ -94,10 +100,22 @@ The registry is generated into [`src/hobbit-library/registry.ts`](src/hobbit-lib
 ### `HobbitPortfolioCard`
 
 - **File:** [`src/hobbit-library/components/HobbitPortfolioCard.tsx`](src/hobbit-library/components/HobbitPortfolioCard.tsx)
-- **Description:** Project or piece card with category, title, optional image slot, and tag.
+- **Description:** Project or piece card with 4:3 image, wood tag, title, and spec line below the image.
+
+### `HobbitProcessSteps`
+
+- **File:** [`src/hobbit-library/components/HobbitProcessSteps.tsx`](src/hobbit-library/components/HobbitProcessSteps.tsx)
+- **Description:** Numbered process step strip for commission or how-it-works flows.
+- **Variants:** `horizontal`, `vertical`
 
 ### `HobbitTag`
 
 - **File:** [`src/hobbit-library/components/HobbitTag.tsx`](src/hobbit-library/components/HobbitTag.tsx)
 - **Description:** Small pill label for categories, status, or metadata on cards and lists.
 - **Variants:** `forest`, `gold`
+
+### `HobbitTestimonial`
+
+- **File:** [`src/hobbit-library/components/HobbitTestimonial.tsx`](src/hobbit-library/components/HobbitTestimonial.tsx)
+- **Description:** Customer quote display in grid or single featured layout.
+- **Variants:** `grid`, `featured`

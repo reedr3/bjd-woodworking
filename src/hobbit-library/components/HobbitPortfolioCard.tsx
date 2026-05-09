@@ -4,24 +4,22 @@ import { cn } from "@/hobbit-library/utils/utils";
 
 export const meta = {
   name: "HobbitPortfolioCard",
-  description: "Project or piece card with category, title, optional image slot, and tag.",
+  description: "Project or piece card with 4:3 image, wood tag, title, and spec line below the image.",
 };
 
 export type HobbitPortfolioCardProps = {
-  category: string;
   title: string;
-  meta: string;
   tag: string;
+  spec: string;
   tagVariant?: HobbitTagVariant;
   image?: ReactNode;
   className?: string;
 };
 
 export function HobbitPortfolioCard({
-  category,
   title,
-  meta,
   tag,
+  spec,
   tagVariant = "forest",
   image,
   className,
@@ -38,17 +36,11 @@ export function HobbitPortfolioCard({
         )}
       </div>
       <div className="px-3.5 pb-3.5 pt-3">
-        <p className="mb-1 font-hobbit-ui text-[10px] uppercase tracking-[0.08em] text-hobbit-gold-dark">
-          {category}
-        </p>
-        <h3 className="mb-1 font-hobbit-display text-[14px] font-bold text-hobbit-wood-darkest">{title}</h3>
-        <p className="mb-2.5 font-hobbit-ui text-[11px] text-hobbit-wood-light">{meta}</p>
-        <div className="flex items-center justify-between">
+        <div className="mb-2">
           <HobbitTag variant={tagVariant}>{tag}</HobbitTag>
-          <span className="text-base text-hobbit-gold-base" aria-hidden>
-            →
-          </span>
         </div>
+        <h3 className="mb-1 font-hobbit-display text-[13px] font-bold text-hobbit-wood-darkest">{title}</h3>
+        <p className="font-hobbit-ui text-[10px] text-hobbit-gold-dark">{spec}</p>
       </div>
     </article>
   );

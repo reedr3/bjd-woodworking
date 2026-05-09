@@ -1,4 +1,4 @@
-import HobbitHolePreview from "@/design-system/components/HobbitHolePreview";
+import HobbitHolePreview from "@/hobbit-library/components/HobbitHolePreview";
 import { notFound } from "next/navigation";
 
 export default function DesignSystemPage() {
@@ -23,19 +23,19 @@ export default function DesignSystemPage() {
               Design tokens use Tailwind v4{" "}
               <code className="font-mono">@theme inline</code> in CSS: base app theme in{" "}
               <code className="font-mono">src/app/globals.css</code>, Hobbit Hole in{" "}
-              <code className="font-mono">src/design-system/styles/hobbit-theme.css</code>{" "}
+              <code className="font-mono">src/hobbit-component-library/styles/hobbit-hole-theme.css</code>{" "}
               (with <code className="font-mono">:root</code> variables where needed).{" "}
               <code className="font-mono">tailwind.config.js</code> is a minimal stub; content paths use{" "}
               <code className="font-mono">@source</code> in <code className="font-mono">globals.css</code>.
             </li>
             <li>
               Components live in{" "}
-              <code className="font-mono">src/design-system/components/</code> and should export a{" "}
+              <code className="font-mono">src/hobbit-component-library/components/</code> and should export a{" "}
               default component plus a named <code className="font-mono">meta</code> object.
             </li>
             <li>
               The AI reference doc is generated at{" "}
-              <code className="font-mono">src/design-system/index.md</code> via{" "}
+              <code className="font-mono">src/hobbit-component-library/index.md</code> via{" "}
               <code className="font-mono">npm run design-system:docs</code>.
             </li>
           </ul>

@@ -15,7 +15,7 @@ import {
   HobbitTypeScale,
   HobbitTypeSpecimen,
   PortfolioCard,
-} from "@/design-system/components/hobbit-hole";
+} from "@/hobbit-library/components";
 
 export const meta = {
   name: "HobbitHolePreview",

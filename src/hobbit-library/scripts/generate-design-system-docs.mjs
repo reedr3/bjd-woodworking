@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const repoRoot = path.resolve(__dirname, "..");
+const repoRoot = path.resolve(__dirname, "..", "..", "..");
 
 function safeReadFile(filePath) {
   try {
@@ -60,7 +60,7 @@ function parseThemeDeclarations(body) {
 }
 
 function collectThemeTokensByFile() {
-  const styleDir = path.join(repoRoot, "src", "design-system", "styles");
+  const styleDir = path.join(repoRoot, "src", "hobbit-component-library", "styles");
   const cssPaths = [path.join(repoRoot, "src", "app", "globals.css")];
 
   if (fs.existsSync(styleDir)) {
@@ -123,11 +123,11 @@ function generateMarkdown({ themeByFile, registryStatus }) {
   lines.push("## Overview");
   lines.push("");
   lines.push(
-    "This file is regenerated from the repo. **Process, directory layout, and workflow** live in [`design-system-plan.md`](../../design-system-plan.md) at the repository root."
+    "This file is regenerated from the repo. **Process, directory layout, and workflow** live in [`docs/design-system-plan.md`](docs/design-system-plan.md) next to this package in the repo."
   );
   lines.push("");
   lines.push(
-    "Design tokens are defined with Tailwind v4 **`@theme inline`** in CSS (for example `src/app/globals.css` and `src/design-system/styles/`). Components live in `src/design-system/components/` and must export a default React component and a named `meta` object."
+    "Design tokens are defined with Tailwind v4 **`@theme inline`** in CSS (for example `src/app/globals.css` and `src/hobbit-component-library/styles/`). Components live in `src/hobbit-component-library/components/` and must export a default React component and a named `meta` object."
   );
   lines.push("");
   lines.push("### Component meta contract");
@@ -145,7 +145,7 @@ function generateMarkdown({ themeByFile, registryStatus }) {
   lines.push("");
 
   if (themeByFile.length === 0) {
-    lines.push("_No `@theme inline` blocks with custom properties were found. Add them under `src/app/globals.css` or `src/design-system/styles/`._");
+    lines.push("_No `@theme inline` blocks with custom properties were found. Add them under `src/app/globals.css` or `src/hobbit-component-library/styles/`._");
     lines.push("");
   } else {
     for (const { relativePath, variables } of themeByFile) {
@@ -161,17 +161,17 @@ function generateMarkdown({ themeByFile, registryStatus }) {
 
   if (registryStatus.kind === "missing") {
     lines.push(
-      "_No registry found at `src/design-system/registry.ts`. Create/register components and re-run the generator._"
+      "_No registry found at `src/hobbit-component-library/registry.ts`. Create/register components and re-run the generator._"
     );
     lines.push("");
   } else if (registryStatus.kind === "empty") {
     lines.push(
-      "_No components registered yet. Add components in `src/design-system/components/` and register them in `src/design-system/registry.ts`._"
+      "_No components registered yet. Add components in `src/hobbit-component-library/components/` and register them in `src/hobbit-component-library/registry.ts`._"
     );
     lines.push("");
   } else {
     lines.push(
-      "_Components appear to be registered, but this scaffold generator does not yet evaluate TypeScript registries. Extend `scripts/generate-design-system-docs.mjs` when you begin porting components._"
+      "_Components appear to be registered, but this scaffold generator does not yet evaluate TypeScript registries. Extend `src/hobbit-component-library/scripts/generate-design-system-docs.mjs` when you begin porting components._"
     );
     lines.push("");
   }
@@ -182,11 +182,11 @@ function generateMarkdown({ themeByFile, registryStatus }) {
 function main() {
   const themeByFile = collectThemeTokensByFile();
 
-  const registryPath = path.join(repoRoot, "src", "design-system", "registry.ts");
+  const registryPath = path.join(repoRoot, "src", "hobbit-component-library", "registry.ts");
   const registrySource = safeReadFile(registryPath);
   const registryStatus = inferRegistryStatus(registrySource);
 
-  const outPath = path.join(repoRoot, "src", "design-system", "index.md");
+  const outPath = path.join(repoRoot, "src", "hobbit-component-library", "index.md");
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, generateMarkdown({ themeByFile, registryStatus }), "utf8");
 

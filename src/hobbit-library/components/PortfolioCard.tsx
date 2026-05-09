@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { HobbitTag, type HobbitTagVariant } from "./HobbitTag";
-import { cn } from "@/lib/utils";
+import { cn } from "@/hobbit-library/utils/utils";
 
 export type PortfolioCardProps = {
   category: string;

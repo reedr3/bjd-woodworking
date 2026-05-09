@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @source "../**/*.{js,ts,jsx,tsx,mdx}";
 
-@import "../design-system/styles/hobbit-theme.css";
+@import "../hobbit-component-library/styles/hobbit-hole-theme.css";
 
 :root {
   --background: #ffffff;

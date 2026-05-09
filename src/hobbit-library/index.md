@@ -7,9 +7,9 @@ Run: npm run design-system:docs
 
 ## Overview
 
-This file is regenerated from the repo. **Process, directory layout, and workflow** live in [`design-system-plan.md`](../../design-system-plan.md) at the repository root.
+This file is regenerated from the repo. **Process, directory layout, and workflow** live in [`docs/design-system-plan.md`](docs/design-system-plan.md) next to this package in the repo.
 
-Design tokens are defined with Tailwind v4 **`@theme inline`** in CSS (for example `src/app/globals.css` and `src/design-system/styles/`). Components live in `src/design-system/components/` and must export a default React component and a named `meta` object.
+Design tokens are defined with Tailwind v4 **`@theme inline`** in CSS (for example `src/app/globals.css` and `src/hobbit-component-library/styles/`). Components live in `src/hobbit-component-library/components/` and must export a default React component and a named `meta` object.
 
 ### Component meta contract
 
@@ -32,7 +32,7 @@ export const meta = {
 }
 ```
 
-### `src/design-system/styles/hobbit-theme.css`
+### `src/hobbit-component-library/styles/hobbit-hole-theme.css`
 
 ```json
 {
@@ -63,4 +63,4 @@ export const meta = {
 
 ## Components
 
-_Components appear to be registered, but this scaffold generator does not yet evaluate TypeScript registries. Extend `scripts/generate-design-system-docs.mjs` when you begin porting components._
+_Components appear to be registered, but this scaffold generator does not yet evaluate TypeScript registries. Extend `src/hobbit-component-library/scripts/generate-design-system-docs.mjs` when you begin porting components._

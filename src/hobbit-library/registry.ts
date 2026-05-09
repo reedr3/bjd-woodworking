@@ -6,7 +6,7 @@ export type DesignSystemComponentMeta = {
 
 export type DesignSystemRegistryEntry = {
   /**
-   * Path to the component file relative to repo root, e.g. `src/design-system/components/ButtonPrimary.tsx`.
+   * Path to the component file relative to repo root, e.g. `src/hobbit-component-library/components/ButtonPrimary.tsx`.
    * This is used by docs tooling and keeps the registry explicit (no magic imports).
    */
   filePath: string;
@@ -17,7 +17,7 @@ export type DesignSystemRegistryEntry = {
  * Explicit registry of design-system components.
  *
  * Keep this list intentionally manual for reliability in Next.js builds and for doc generation.
- * Components themselves should live in `src/design-system/components/` and export:
+ * Components themselves should live in `src/hobbit-component-library/components/` and export:
  *
  * ```tsx
  * export const meta = { name: 'ButtonPrimary', description: '...', variants: ['...'] }
@@ -26,7 +26,7 @@ export type DesignSystemRegistryEntry = {
  */
 export const registry: DesignSystemRegistryEntry[] = [
   {
-    filePath: "src/design-system/components/HobbitHolePreview.tsx",
+    filePath: "src/hobbit-component-library/components/HobbitHolePreview.tsx",
     meta: {
       name: "HobbitHolePreview",
       description:

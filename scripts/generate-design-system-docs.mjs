@@ -78,7 +78,7 @@ function generateMarkdown({ tokens, registryStatus }) {
   lines.push("## Overview");
   lines.push("");
   lines.push(
-    "Design tokens are defined in `tailwind.config.js` under `theme.extend`. Components live in `src/design-system/components/` and must export a default React component and a named `meta` object."
+    "Design tokens may live in `tailwind.config.js` under `theme.extend` and/or in CSS under `src/design-system/styles/` (for example `hobbit-theme.css` with `@theme inline`). Components live in `src/design-system/components/` and must export a default React component and a named `meta` object."
   );
   lines.push("");
   lines.push("### Component meta contract");

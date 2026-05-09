@@ -24,5 +24,15 @@ export type DesignSystemRegistryEntry = {
  * export default function ButtonPrimary() { ... }
  * ```
  */
-export const registry: DesignSystemRegistryEntry[] = [];
+export const registry: DesignSystemRegistryEntry[] = [
+  {
+    filePath: "src/design-system/components/HobbitHolePreview.tsx",
+    meta: {
+      name: "HobbitHolePreview",
+      description:
+        "Hobbit Hole design system — colors, type, navigation, cards, and layout primitives ported from Refine HTML Mockup.",
+      variants: ["full-showcase"],
+    },
+  },
+];
 

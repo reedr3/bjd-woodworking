@@ -1,0 +1,62 @@
+/* Hobbit Hole design system — parallel to shadcn tokens in theme.css */
+
+:root {
+  --hobbit-cream-light: #faf5ea;
+  --hobbit-cream-base: #f0e8d0;
+  --hobbit-cream-warm: #f0e6c8;
+  --hobbit-sand: #d8ceaa;
+  --hobbit-paper: #fffdf5;
+
+  --hobbit-forest-dark: #4a6a34;
+  --hobbit-forest-base: #6b8e4e;
+  --hobbit-forest-light: #8aae7a;
+  --hobbit-forest-pale: #c8e0b0;
+  --hobbit-forest-soft: #a8c898;
+
+  --hobbit-gold-base: #c8963c;
+  --hobbit-gold-dark: #a67a28;
+  --hobbit-gold-light: #c8a860;
+  --hobbit-gold-rich: #d4a848;
+  --hobbit-gold-thumb: #c8a060;
+
+  --hobbit-wood-darkest: #4a3a18;
+  --hobbit-wood-medium: #7a6030;
+  --hobbit-wood-light: #8b7a50;
+
+  --hobbit-font-display: "Playfair Display", ui-serif, serif;
+  --hobbit-font-body: "Lora", ui-serif, serif;
+  --hobbit-font-ui: "Courier Prime", ui-monospace, monospace;
+
+  /* Warm elevation for swatches / cards */
+  --hobbit-shadow-warm: 0 2px 8px rgb(74 58 24 / 0.1);
+}
+
+@theme inline {
+  --color-hobbit-cream-light: var(--hobbit-cream-light);
+  --color-hobbit-cream-base: var(--hobbit-cream-base);
+  --color-hobbit-cream-warm: var(--hobbit-cream-warm);
+  --color-hobbit-sand: var(--hobbit-sand);
+  --color-hobbit-paper: var(--hobbit-paper);
+
+  --color-hobbit-forest-dark: var(--hobbit-forest-dark);
+  --color-hobbit-forest-base: var(--hobbit-forest-base);
+  --color-hobbit-forest-light: var(--hobbit-forest-light);
+  --color-hobbit-forest-pale: var(--hobbit-forest-pale);
+  --color-hobbit-forest-soft: var(--hobbit-forest-soft);
+
+  --color-hobbit-gold-base: var(--hobbit-gold-base);
+  --color-hobbit-gold-dark: var(--hobbit-gold-dark);
+  --color-hobbit-gold-light: var(--hobbit-gold-light);
+  --color-hobbit-gold-rich: var(--hobbit-gold-rich);
+  --color-hobbit-gold-thumb: var(--hobbit-gold-thumb);
+
+  --color-hobbit-wood-darkest: var(--hobbit-wood-darkest);
+  --color-hobbit-wood-medium: var(--hobbit-wood-medium);
+  --color-hobbit-wood-light: var(--hobbit-wood-light);
+
+  --font-hobbit-display: var(--hobbit-font-display);
+  --font-hobbit-body: var(--hobbit-font-body);
+  --font-hobbit-ui: var(--hobbit-font-ui);
+
+  --shadow-hobbit-warm: var(--hobbit-shadow-warm);
+}

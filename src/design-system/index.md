@@ -7,7 +7,7 @@ Run: npm run design-system:docs
 
 ## Overview
 
-Design tokens are defined in `tailwind.config.js` under `theme.extend`. Components live in `src/design-system/components/` and must export a default React component and a named `meta` object.
+Design tokens may live in `tailwind.config.js` under `theme.extend` and/or in CSS under `src/design-system/styles/` (for example `hobbit-theme.css` with `@theme inline`). Components live in `src/design-system/components/` and must export a default React component and a named `meta` object.
 
 ### Component meta contract
 
@@ -25,7 +25,7 @@ _No tokens have been ported yet. Populate `theme.extend` in `tailwind.config.js`
 
 ## Components
 
-_No components registered yet. Add components in `src/design-system/components/` and register them in `src/design-system/registry.ts`._
+_Components appear to be registered, but this scaffold generator does not yet evaluate TypeScript registries. Extend `scripts/generate-design-system-docs.mjs` when you begin porting components._
 
 ## Snapshot export (SingleFile)
 

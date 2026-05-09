@@ -1,6 +1,6 @@
 <!--
 This file is generated. DO NOT EDIT BY HAND.
-Run: npm run hobbit-library:docs
+Run: npm run hobbit-library:docs (syncs registry from components, then writes this file)
 -->
 
 # Hobbit Library
@@ -9,7 +9,7 @@ Run: npm run hobbit-library:docs
 
 This file is regenerated from the repo. **Process, directory layout, and workflow** live in [`docs/hobbit-library-plan.md`](docs/hobbit-library-plan.md) next to this package in the repo.
 
-Design tokens are defined with Tailwind v4 **`@theme inline`** in CSS (for example `src/app/globals.css` and `src/hobbit-library/styles/`). Components live in `src/hobbit-library/components/` and must export a default React component and a named `meta` object.
+Design tokens are defined with Tailwind v4 **`@theme inline`** in CSS (for example `src/app/globals.css` and `src/hobbit-library/styles/`). Reusable components under `src/hobbit-library/components/` (sync skips `components/meta-preview/`; see `docs/hobbit-library-plan.md`) should export a default React component plus `export const meta` (see below). Run `npm run hobbit-library:sync-registry` (or `npm run hobbit-library:docs`) to refresh `src/hobbit-library/registry.ts` from those files.
 
 ### Component meta contract
 
@@ -63,4 +63,41 @@ export const meta = {
 
 ## Components
 
-_Components appear to be registered, but this scaffold generator does not yet evaluate TypeScript registries. Extend `src/hobbit-library/scripts/generate-hobbit-library-docs.mjs` when you begin porting components._
+The registry is generated into [`src/hobbit-library/registry.ts`](src/hobbit-library/registry.ts) from `export const meta` in each scanned component file (`components/meta-preview/` is excluded). Run `npm run hobbit-library:docs` (or `hobbit-library:sync-registry`) after changing meta.
+
+### `HobbitBanner`
+
+- **File:** [`src/hobbit-library/components/HobbitBanner.tsx`](src/hobbit-library/components/HobbitBanner.tsx)
+- **Description:** Full-width top strip for announcements or page context in forest tones.
+
+### `HobbitButton`
+
+- **File:** [`src/hobbit-library/components/HobbitButton.tsx`](src/hobbit-library/components/HobbitButton.tsx)
+- **Description:** Action button with gold primary, ghost, and outline-gold styles.
+- **Variants:** `primary`, `ghost`, `outline-gold`
+
+### `HobbitHero`
+
+- **File:** [`src/hobbit-library/components/HobbitHero.tsx`](src/hobbit-library/components/HobbitHero.tsx)
+- **Description:** Large hero block with eyebrow, title, and supporting copy on a warm bordered panel.
+
+### `HobbitNav`
+
+- **File:** [`src/hobbit-library/components/HobbitNav.tsx`](src/hobbit-library/components/HobbitNav.tsx)
+- **Description:** Top navigation bar with brand, links, and a CTA for Hobbit Hole layouts.
+
+### `HobbitPageShell`
+
+- **File:** [`src/hobbit-library/components/HobbitPageShell.tsx`](src/hobbit-library/components/HobbitPageShell.tsx)
+- **Description:** Full-viewport page wrapper with cream background and body typography defaults.
+
+### `HobbitPortfolioCard`
+
+- **File:** [`src/hobbit-library/components/HobbitPortfolioCard.tsx`](src/hobbit-library/components/HobbitPortfolioCard.tsx)
+- **Description:** Project or piece card with category, title, optional image slot, and tag.
+
+### `HobbitTag`
+
+- **File:** [`src/hobbit-library/components/HobbitTag.tsx`](src/hobbit-library/components/HobbitTag.tsx)
+- **Description:** Small pill label for categories, status, or metadata on cards and lists.
+- **Variants:** `forest`, `gold`

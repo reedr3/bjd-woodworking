@@ -1,6 +1,12 @@
 import * as React from "react";
 import { cn } from "@/hobbit-library/utils/utils";
 
+export const meta = {
+  name: "HobbitButton",
+  description: "Action button with gold primary, ghost, and outline-gold styles.",
+  variants: ["primary", "ghost", "outline-gold"],
+};
+
 const variantClasses = {
   primary:
     "border-0 bg-hobbit-gold-base text-hobbit-cream-light hover:bg-hobbit-gold-light",

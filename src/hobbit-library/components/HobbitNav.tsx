@@ -1,5 +1,10 @@
 import { cn } from "@/hobbit-library/utils/utils";
 
+export const meta = {
+  name: "HobbitNav",
+  description: "Top navigation bar with brand, links, and a CTA for Hobbit Hole layouts.",
+};
+
 export type HobbitNavLink = {
   label: string;
   href?: string;

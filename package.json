@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "hobbit-library:docs": "node src/hobbit-library/scripts/generate-hobbit-library-docs.mjs"
+    "hobbit-library:sync-registry": "node src/hobbit-library/scripts/sync-hobbit-library-registry.mjs",
+    "hobbit-library:docs": "node src/hobbit-library/scripts/sync-hobbit-library-registry.mjs && node src/hobbit-library/scripts/generate-hobbit-library-docs.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

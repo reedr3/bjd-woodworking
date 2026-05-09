@@ -14,14 +14,8 @@ import {
   HobbitTag,
   HobbitTypeScale,
   HobbitTypeSpecimen,
-  PortfolioCard,
+  HobbitPortfolioCard,
 } from "@/hobbit-library/components";
-
-export const meta = {
-  name: "HobbitHolePreview",
-  description: "Hobbit Hole library — colors, type, navigation, cards, and layout primitives.",
-  variants: ["full-showcase"],
-};
 
 export default function HobbitHolePreview() {
   return (
@@ -135,7 +129,7 @@ export default function HobbitHolePreview() {
           </HobbitComponentShowcase>
 
           <HobbitComponentShowcase title="Portfolio Card">
-            <PortfolioCard
+            <HobbitPortfolioCard
               category="Tables"
               title="Heirloom walnut dining table"
               meta="Black Walnut · 96″ × 42″"

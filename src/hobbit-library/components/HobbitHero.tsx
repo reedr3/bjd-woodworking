@@ -1,5 +1,10 @@
 import type { ReactNode } from "react";
 
+export const meta = {
+  name: "HobbitHero",
+  description: "Large hero block with eyebrow, title, and supporting copy on a warm bordered panel.",
+};
+
 export type HobbitHeroProps = {
   eyebrow: string;
   title: string;

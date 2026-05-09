@@ -1,6 +1,12 @@
 import type { ReactNode } from "react";
 import { cn } from "@/hobbit-library/utils/utils";
 
+export const meta = {
+  name: "HobbitTag",
+  description: "Small pill label for categories, status, or metadata on cards and lists.",
+  variants: ["forest", "gold"],
+};
+
 const variantClasses = {
   forest:
     "border-hobbit-forest-light/40 bg-hobbit-forest-light/15 text-hobbit-forest-dark",

@@ -1,4 +1,4 @@
-import HobbitHolePreview from "@/hobbit-library/components/HobbitHolePreview";
+import HobbitHolePreview from "@/hobbit-library/components/meta-preview/HobbitHolePreview";
 import { notFound } from "next/navigation";
 
 export default function HobbitLibraryPage() {
@@ -29,9 +29,16 @@ export default function HobbitLibraryPage() {
               <code className="font-mono">@source</code> in <code className="font-mono">globals.css</code>.
             </li>
             <li>
-              Components live in{" "}
-              <code className="font-mono">src/hobbit-library/components/</code> and should export a{" "}
-              default component plus a named <code className="font-mono">meta</code> object.
+              Reusable components live in{" "}
+              <code className="font-mono">src/hobbit-library/components/</code> and export{" "}
+              <code className="font-mono">export const meta</code> for the registry. The dev preview below lives in{" "}
+              <code className="font-mono">components/meta-preview/</code> and is not registered.
+            </li>
+            <li>
+              <code className="font-mono">src/hobbit-library/registry.ts</code> is generated from{" "}
+              <code className="font-mono">export const meta</code> in each component via{" "}
+              <code className="font-mono">npm run hobbit-library:sync-registry</code> (also runs before{" "}
+              <code className="font-mono">npm run hobbit-library:docs</code>).
             </li>
             <li>
               The AI reference doc is generated at{" "}

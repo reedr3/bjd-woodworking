@@ -2,7 +2,12 @@ import type { ReactNode } from "react";
 import { HobbitTag, type HobbitTagVariant } from "./HobbitTag";
 import { cn } from "@/hobbit-library/utils/utils";
 
-export type PortfolioCardProps = {
+export const meta = {
+  name: "HobbitPortfolioCard",
+  description: "Project or piece card with category, title, optional image slot, and tag.",
+};
+
+export type HobbitPortfolioCardProps = {
   category: string;
   title: string;
   meta: string;
@@ -12,7 +17,7 @@ export type PortfolioCardProps = {
   className?: string;
 };
 
-export function PortfolioCard({
+export function HobbitPortfolioCard({
   category,
   title,
   meta,
@@ -20,7 +25,7 @@ export function PortfolioCard({
   tagVariant = "forest",
   image,
   className,
-}: PortfolioCardProps) {
+}: HobbitPortfolioCardProps) {
   return (
     <article
       className={cn("max-w-[300px] overflow-hidden rounded-lg border border-hobbit-sand bg-hobbit-paper", className)}

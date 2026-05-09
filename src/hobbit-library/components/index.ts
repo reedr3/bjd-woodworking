@@ -1,7 +1,7 @@
 export { HobbitNav, type HobbitNavLink, type HobbitNavProps } from "./HobbitNav";
 export { HobbitButton, type HobbitButtonProps, type HobbitButtonVariant } from "./HobbitButton";
 export { HobbitTag, type HobbitTagProps, type HobbitTagVariant } from "./HobbitTag";
-export { PortfolioCard, type PortfolioCardProps } from "./PortfolioCard";
+export { HobbitPortfolioCard, type HobbitPortfolioCardProps } from "./HobbitPortfolioCard";
 export { HobbitBanner } from "./HobbitBanner";
 export { HobbitHero, type HobbitHeroProps } from "./HobbitHero";
 export { HobbitPageShell } from "./HobbitPageShell";
@@ -16,4 +16,4 @@ export {
   HobbitSpacingDemo,
   HobbitPrinciple,
   type HobbitTypePreset,
-} from "./showcase";
+} from "./meta-preview/showcase";

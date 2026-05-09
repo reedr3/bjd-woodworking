@@ -27,7 +27,7 @@ src/
       hobbit-library-view/
         page.tsx                # Dev-only route — Hobbit library preview (notFound in production)
   hobbit-library/
-    registry.ts                 # Manual list of showcase components (used by docs tooling)
+    registry.ts                 # Auto-generated — reusable components with export const meta (sync excludes meta-preview/)
     index.md                    # Generated — npm run hobbit-library:docs
     docs/
       hobbit-library-plan.md    # This plan (human-maintained)
@@ -35,6 +35,7 @@ src/
       generate-hobbit-library-docs.mjs
     styles/                     # Theme CSS (@theme inline, e.g. hobbit-hole-theme.css)
     components/                 # Hobbit library UI (flat files and subfolders allowed)
+      meta-preview/             # Dev preview only — excluded from registry sync; see “meta-preview” below
     utils/
       utils.ts                  # Shared helpers (e.g. cn) for library components
 ```
@@ -51,9 +52,13 @@ Tokens are **Tailwind v4 `@theme inline`** in CSS (`src/app/globals.css` and `sr
 
 ## Components
 
-Live under **`src/hobbit-library/components/`** (one file or a subfolder with a barrel export). Register showcase entries in **`src/hobbit-library/registry.ts`**. Each registered preview should export a default component and a named **`meta`** object (`name`, optional `description`, optional `variants`). The exact shape is repeated in **`src/hobbit-library/index.md`** (generated).
+Live under **`src/hobbit-library/components/`** (one file or a subfolder with a barrel export). **`npm run hobbit-library:sync-registry`** scans for **`export const meta`** and writes **`src/hobbit-library/registry.ts`**. Each registered file should export a default component and a named **`meta`** object (`name`, optional `description`, optional `variants`). The exact shape is repeated in **`src/hobbit-library/index.md`** (generated).
 
 Use Tailwind utilities where possible; **narrow inline `style` is acceptable** for dynamic demos (for example swatches driven by a hex prop).
+
+### `components/meta-preview/` (human reference)
+
+**Not in the registry.** This folder holds the dev-route composition (**`HobbitHolePreview.tsx`**) and layout/demo helpers (**`showcase.tsx`**) used only by **`src/app/(dev-routes)/hobbit-library-view/page.tsx`**. They are intentionally skipped by **`sync-hobbit-library-registry.mjs`** so **`registry.ts`** / **`index.md`** list reusable primitives only. Do not add **`export const meta`** here expecting it to sync; document or change these files directly.
 
 ---
 
@@ -73,7 +78,7 @@ single-file --browser-wait-until networkidle0 http://localhost:3000/hobbit-libra
 
 ## Regenerating `index.md`
 
-After changing **`@theme inline`** (or supporting `:root` variables), **`registry.ts`**, or anything the generator should reflect:
+After changing **`@theme inline`** (or supporting `:root` variables), **`export const meta`** on registered components, or anything the generator should reflect:
 
 ```bash
 npm run hobbit-library:docs
@@ -86,7 +91,7 @@ Implementation: **`src/hobbit-library/scripts/generate-hobbit-library-docs.mjs`*
 ## Conventions
 
 - Prefer hobbit-library tokens (from `@theme inline`) over magic values in app UI.
-- New showcase components: add **`meta`**, register in **`registry.ts`**, run **`npm run hobbit-library:docs`**.
+- New reusable primitives: add **`export const meta`**, run **`npm run hobbit-library:sync-registry`** (or **`npm run hobbit-library:docs`**). Preview-only UI stays under **`components/meta-preview/`** and is not synced to the registry.
 - Do not hand-edit **`src/hobbit-library/index.md`**.
 
 ---

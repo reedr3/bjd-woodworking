@@ -136,6 +136,13 @@ export {
   type HobbitFaqAccordionProps,
   type HobbitFaqAccordionItem,
 } from "./HobbitFaqAccordion";
+export { HobbitShopHero, type HobbitShopHeroProps } from "./HobbitShopHero";
+export {
+  HobbitProductCard,
+  type HobbitProductCardProps,
+  type HobbitProductBadge,
+} from "./HobbitProductCard";
+export { HobbitNotifyStrip, type HobbitNotifyStripProps } from "./HobbitNotifyStrip";
 export {
   HobbitSection,
   HobbitSubsectionTitle,

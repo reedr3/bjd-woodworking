@@ -64,7 +64,7 @@ Use Tailwind utilities where possible; **narrow inline `style` is acceptable** f
 
 ## Dev Hobbit library route
 
-**`src/app/(dev-routes)/hobbit-library-view/page.tsx`** is the dev-only Hobbit library preview (`notFound()` when `NODE_ENV !== 'development'`). It is a living preview, not an exhaustive auto-catalog of every file in `components/`.
+**`src/app/(dev-routes)/hobbit-library-view/page.tsx`** is the dev-only Hobbit library preview (`notFound()` when `NODE_ENV !== 'development'`). **`HobbitHolePreview.tsx`** is maintained as a visual catalog of **every** entry in **`registry.ts`** (plus foundation demos for colors, type, spacing, and principles). After adding a component with `export const meta`, run **`npm run hobbit-library:docs`** and add a demo block to the preview so the dev route stays in sync.
 
 **Visual check:** run `npm run dev` and open `http://localhost:3000/hobbit-library-view`.
 

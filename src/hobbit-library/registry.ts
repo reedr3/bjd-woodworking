@@ -20,10 +20,24 @@ export type HobbitLibraryRegistryEntry = {
 
 export const registry: HobbitLibraryRegistryEntry[] = [
   {
+    filePath: "src/hobbit-library/components/HobbitAboutHero.tsx",
+    meta: {
+      name: "HobbitAboutHero",
+      description: "Split-column about-page hero: portrait image block on the left, eyebrow + h1 with optional italic emphasis + drop-cap lede on the right.",
+    },
+  },
+  {
     filePath: "src/hobbit-library/components/HobbitBanner.tsx",
     meta: {
       name: "HobbitBanner",
       description: "Full-width top strip for announcements or page context in forest tones.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitBioTimeline.tsx",
+    meta: {
+      name: "HobbitBioTimeline",
+      description: "Vertical left-rail timeline for biography or history entries. Major milestones get a filled gold bullet; minor entries get an open one.",
     },
   },
   {
@@ -35,10 +49,87 @@ export const registry: HobbitLibraryRegistryEntry[] = [
     },
   },
   {
+    filePath: "src/hobbit-library/components/HobbitCommissionForm.tsx",
+    meta: {
+      name: "HobbitCommissionForm",
+      description: "Four-step commission request form: piece type + description, dimensions + materials, budget + timeline, and contact details. Renders a confirmation state on submit.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitCommissionHero.tsx",
+    meta: {
+      name: "HobbitCommissionHero",
+      description: "Two-column commission page hero with eyebrow, h1 with optional italic emphasis, subtext, meta-stat badges, and a warm image-placeholder panel.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitCommissionProcess.tsx",
+    meta: {
+      name: "HobbitCommissionProcess",
+      description: "Commission process section: 4-column dark-green card grid where each step shows a numbered bullet, title, time/cost badge, and description.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitContactHero.tsx",
+    meta: {
+      name: "HobbitContactHero",
+      description: "Contact page hero: split-column layout with eyebrow + h1 (optional italic) + subtext on the left and a live status card on the right.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitContactMap.tsx",
+    meta: {
+      name: "HobbitContactMap",
+      description: "Map & directions section: decorative SVG map with a pin, address label, and a grid of visit instruction tiles.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitCtaStrip.tsx",
+    meta: {
+      name: "HobbitCtaStrip",
+      description: "Full-width call-to-action strip with heading, optional subtext, and a light button.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitFaqAccordion.tsx",
+    meta: {
+      name: "HobbitFaqAccordion",
+      description: "FAQ section rendered as an expandable accordion: each item toggles open/closed with a +/− button.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitFaqGrid.tsx",
+    meta: {
+      name: "HobbitFaqGrid",
+      description: "FAQ section with a 2-column grid of question/answer cards.",
+    },
+  },
+  {
     filePath: "src/hobbit-library/components/HobbitFooter.tsx",
     meta: {
       name: "HobbitFooter",
-      description: "Site footer with brand, tagline, and navigation links in forest tones.",
+      description: "Site footer with serif brand, centered monospace nav, and copyright in forest tones.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitFormStepper.tsx",
+    meta: {
+      name: "HobbitFormStepper",
+      description: "Multi-step form progress indicator with numbered dots and connector lines.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitGalleryCard.tsx",
+    meta: {
+      name: "HobbitGalleryCard",
+      description: "Portfolio gallery piece card with image block, hover overlay, category label, title, spec line, and status tags. Supports a featured (16:9 wide) variant.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitGalleryFilterBar.tsx",
+    meta: {
+      name: "HobbitGalleryFilterBar",
+      description: "Scrollable horizontal filter tab strip for gallery category filtering. Stateless — parent owns activeFilter and onFilterChange.",
     },
   },
   {
@@ -50,10 +141,38 @@ export const registry: HobbitLibraryRegistryEntry[] = [
     },
   },
   {
+    filePath: "src/hobbit-library/components/HobbitMakerStory.tsx",
+    meta: {
+      name: "HobbitMakerStory",
+      description: "Two-column long-form prose section with a stat-card sidebar. First paragraph gets a decorative drop cap.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitMaterialsGrid.tsx",
+    meta: {
+      name: "HobbitMaterialsGrid",
+      description: "Wood-swatch card grid: a colored swatch block above the material name and sourcing spec.",
+    },
+  },
+  {
     filePath: "src/hobbit-library/components/HobbitNav.tsx",
     meta: {
       name: "HobbitNav",
       description: "Top navigation bar with brand, links, and a CTA for Hobbit Hole layouts.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitPageContainer.tsx",
+    meta: {
+      name: "HobbitPageContainer",
+      description: "Centered content column with shared hobbit page gutter and max width.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitPageHero.tsx",
+    meta: {
+      name: "HobbitPageHero",
+      description: "Interior page hero: eyebrow label, h1 title, and a short subtext paragraph. Sits directly under the nav with a warm cream band and bottom border.",
     },
   },
   {
@@ -64,10 +183,31 @@ export const registry: HobbitLibraryRegistryEntry[] = [
     },
   },
   {
+    filePath: "src/hobbit-library/components/HobbitPhilosophyGrid.tsx",
+    meta: {
+      name: "HobbitPhilosophyGrid",
+      description: "Three-column numbered-principle cards on a forest-dark background. Good for brand values or working philosophy.",
+    },
+  },
+  {
     filePath: "src/hobbit-library/components/HobbitPortfolioCard.tsx",
     meta: {
       name: "HobbitPortfolioCard",
       description: "Project or piece card with 4:3 image, wood tag, title, and spec line below the image.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitPressStrip.tsx",
+    meta: {
+      name: "HobbitPressStrip",
+      description: "Press-mention strip: publication names arranged in a centered warm card. Italic serif for editorial names, small caps for trade/local titles.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitPricingGrid.tsx",
+    meta: {
+      name: "HobbitPricingGrid",
+      description: "3-column pricing reference grid for commission work: category label, piece name, price range, and lead-time note per card.",
     },
   },
   {
@@ -76,6 +216,34 @@ export const registry: HobbitLibraryRegistryEntry[] = [
       name: "HobbitProcessSteps",
       description: "Numbered process step strip for commission or how-it-works flows.",
       variants: ["horizontal", "vertical"],
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitPullQuote.tsx",
+    meta: {
+      name: "HobbitPullQuote",
+      description: "Dark-green featured quote section: two-column layout with a square image placeholder on the left and a large pull quote, author name, and project line on the right.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitReassureStrip.tsx",
+    meta: {
+      name: "HobbitReassureStrip",
+      description: "3-column strip of reassurance items below a form: diamond-mark icon, bold title, and short description per item. Sits on a section background without its own page container.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitSocialCta.tsx",
+    meta: {
+      name: "HobbitSocialCta",
+      description: "Dark-background CTA section with heading, optional italic emphasis, subtext, social pills, and up to two action buttons.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitSocialFollow.tsx",
+    meta: {
+      name: "HobbitSocialFollow",
+      description: "Dark-green 'Follow along' section with a three-column grid of social platform cards (platform name, handle, description).",
     },
   },
   {
@@ -92,6 +260,34 @@ export const registry: HobbitLibraryRegistryEntry[] = [
       name: "HobbitTestimonial",
       description: "Customer quote display in grid or single featured layout.",
       variants: ["grid", "featured"],
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitTestimonialStrip.tsx",
+    meta: {
+      name: "HobbitTestimonialStrip",
+      description: "Compact 3-column testimonial strip with star ratings, italic quote, author, and project label. Designed to appear inline under a section (e.g. below a timeline).",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitTileSelector.tsx",
+    meta: {
+      name: "HobbitTileSelector",
+      description: "Selectable tile grid for single-option selection in forms.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitTimeline.tsx",
+    meta: {
+      name: "HobbitTimeline",
+      description: "Circular-step process timeline: numbered gold circles connected by a horizontal line.",
+    },
+  },
+  {
+    filePath: "src/hobbit-library/components/HobbitWorkshopGallery.tsx",
+    meta: {
+      name: "HobbitWorkshopGallery",
+      description: "Bento-style image tile grid with captions. First tile spans two rows when marked tall.",
     },
   },
 ];

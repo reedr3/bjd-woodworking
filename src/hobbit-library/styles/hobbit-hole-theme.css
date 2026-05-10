@@ -14,6 +14,8 @@
   --hobbit-forest-light: #8aae7a;
   --hobbit-forest-pale: #c8e0b0;
   --hobbit-forest-soft: #a8c898;
+  /** Footer / de-emphasized copy on forest-dark */
+  --hobbit-forest-caption: #7a9e6a;
 
   --hobbit-gold-base: #c8963c;
   --hobbit-gold-dark: #a67a28;
@@ -51,6 +53,7 @@
   --color-hobbit-forest-light: var(--hobbit-forest-light);
   --color-hobbit-forest-pale: var(--hobbit-forest-pale);
   --color-hobbit-forest-soft: var(--hobbit-forest-soft);
+  --color-hobbit-forest-caption: var(--hobbit-forest-caption);
 
   --color-hobbit-gold-base: var(--hobbit-gold-base);
   --color-hobbit-gold-dark: var(--hobbit-gold-dark);

@@ -52,7 +52,6 @@ const faqItems = [
 
 const navLinks = [
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Shop", href: "/shop" },
   { label: "Commissions", href: "/commissions2", active: true },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -198,7 +197,7 @@ export default function Commissions2Page() {
       <HobbitFooter
         brand="Bridget J. Duffy"
         links={navLinks}
-        copyright="© 2025 Bridget J. Duffy"
+        copyright="© 2026 Bridget J. Duffy"
       />
     </HobbitPageShell>
   );

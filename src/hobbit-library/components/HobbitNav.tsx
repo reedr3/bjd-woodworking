@@ -23,7 +23,7 @@ export type HobbitNavProps = {
 
 export function HobbitNav({ brand, brandHref = "/", links, cta, className }: HobbitNavProps) {
   const brandClassName = cn(
-    "font-hobbit-display text-[17px] font-bold leading-tight text-hobbit-cream-light no-underline md:text-[18px]",
+    "font-hobbit-display text-lg font-bold leading-tight text-hobbit-cream-light no-underline sm:text-xl md:text-[22px]",
     "outline-none transition-opacity hover:opacity-90",
     "focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-hobbit-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-hobbit-forest-base",
   );
@@ -38,7 +38,7 @@ export function HobbitNav({ brand, brandHref = "/", links, cta, className }: Hob
           <a href={brandHref} className={brandClassName}>
             {brand}
           </a>
-          <ul className="m-0 flex list-none flex-wrap justify-end gap-3 p-0 md:gap-5">
+          <ul className="m-0 flex list-none flex-wrap justify-end gap-5 p-0 md:gap-8">
             {links.map((link) => (
               <li key={link.label}>
                 {link.href ? (
@@ -46,11 +46,11 @@ export function HobbitNav({ brand, brandHref = "/", links, cta, className }: Hob
                     href={link.href}
                     aria-current={link.active ? "page" : undefined}
                     className={cn(
-                      "font-hobbit-ui text-[11px] uppercase tracking-[0.08em] outline-none transition-colors md:text-[12px]",
+                      "inline-block border-b-[1.5px] border-solid pb-[2px] font-hobbit-ui text-[13px] uppercase tracking-[0.08em] outline-none transition-colors md:text-[14px]",
                       "focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-hobbit-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-hobbit-forest-base",
                       link.active
-                        ? "font-bold text-hobbit-cream-light"
-                        : "font-normal text-hobbit-cream-light/85 hover:text-hobbit-cream-light",
+                        ? "border-hobbit-gold-base font-bold text-hobbit-cream-light"
+                        : "border-transparent font-normal text-hobbit-forest-pale hover:text-hobbit-cream-light",
                     )}
                   >
                     {link.label}
@@ -58,8 +58,10 @@ export function HobbitNav({ brand, brandHref = "/", links, cta, className }: Hob
                 ) : (
                   <span
                     className={cn(
-                      "font-hobbit-ui text-[11px] uppercase tracking-[0.08em] md:text-[12px]",
-                      link.active ? "font-bold text-hobbit-cream-light" : "font-normal text-hobbit-cream-light/85",
+                      "inline-block border-b-[1.5px] border-solid pb-[2px] font-hobbit-ui text-[13px] uppercase tracking-[0.08em] md:text-[14px]",
+                      link.active
+                        ? "border-hobbit-gold-base font-bold text-hobbit-cream-light"
+                        : "border-transparent font-normal text-hobbit-forest-pale",
                     )}
                   >
                     {link.label}

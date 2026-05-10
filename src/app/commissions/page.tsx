@@ -157,7 +157,7 @@ export default function CommissionsPage() {
           { label: "About", href: "/about" },
           { label: "Contact", href: "/contact" },
         ]}
-        copyright="© 2026 Bridget J. Duffy. All rights reserved."
+        copyright="© 2026 Bridget J. Duffy"
       />
     </HobbitPageShell>
   );

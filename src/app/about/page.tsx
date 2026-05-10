@@ -215,7 +215,7 @@ export default function AboutPage() {
           { label: "About", href: "/about", active: true },
           { label: "Contact", href: "/contact" },
         ]}
-        copyright="© 2025 Bridget J. Duffy"
+        copyright="© 2026 Bridget J. Duffy"
       />
     </HobbitPageShell>
   );

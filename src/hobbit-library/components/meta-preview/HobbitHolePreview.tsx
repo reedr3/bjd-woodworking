@@ -207,7 +207,7 @@ export default function HobbitHolePreview() {
                 { label: "About", href: "#" },
                 { label: "Contact", href: "#" },
               ]}
-              copyright="© 2026 Bridget J. Duffy. All rights reserved."
+              copyright="© 2026 Bridget J. Duffy"
             />
           </HobbitComponentShowcase>
         </HobbitSection>

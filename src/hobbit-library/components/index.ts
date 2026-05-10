@@ -98,6 +98,16 @@ export {
   type HobbitSocialFollowCard,
 } from "./HobbitSocialFollow";
 export {
+  HobbitGalleryCard,
+  type HobbitGalleryCardProps,
+  type HobbitGalleryCardTag,
+  type HobbitGalleryCardTone,
+} from "./HobbitGalleryCard";
+export {
+  HobbitGalleryFilterBar,
+  type HobbitGalleryFilterBarProps,
+} from "./HobbitGalleryFilterBar";
+export {
   HobbitSection,
   HobbitSubsectionTitle,
   HobbitColorGroup,

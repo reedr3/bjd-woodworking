@@ -49,6 +49,38 @@ export {
   type HobbitCommissionFormProps,
   type HobbitCommissionFormStep,
 } from "./HobbitCommissionForm";
+export { HobbitAboutHero, type HobbitAboutHeroProps } from "./HobbitAboutHero";
+export {
+  HobbitMakerStory,
+  type HobbitMakerStoryProps,
+  type HobbitStatCard,
+} from "./HobbitMakerStory";
+export {
+  HobbitWorkshopGallery,
+  type HobbitWorkshopGalleryProps,
+  type HobbitWorkshopTile,
+} from "./HobbitWorkshopGallery";
+export {
+  HobbitPhilosophyGrid,
+  type HobbitPhilosophyGridProps,
+  type HobbitPrincipleCard,
+} from "./HobbitPhilosophyGrid";
+export {
+  HobbitMaterialsGrid,
+  type HobbitMaterialsGridProps,
+  type HobbitMaterial,
+} from "./HobbitMaterialsGrid";
+export {
+  HobbitBioTimeline,
+  type HobbitBioTimelineProps,
+  type HobbitBioEntry,
+} from "./HobbitBioTimeline";
+export { HobbitPressStrip, type HobbitPressStripProps, type HobbitPressItem } from "./HobbitPressStrip";
+export {
+  HobbitSocialCta,
+  type HobbitSocialCtaProps,
+  type HobbitSocialPill,
+} from "./HobbitSocialCta";
 export {
   HobbitSection,
   HobbitSubsectionTitle,

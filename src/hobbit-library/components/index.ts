@@ -82,6 +82,22 @@ export {
   type HobbitSocialPill,
 } from "./HobbitSocialCta";
 export {
+  HobbitContactHero,
+  type HobbitContactHeroProps,
+  type HobbitContactStatus,
+  type HobbitContactStatusMeta,
+} from "./HobbitContactHero";
+export {
+  HobbitContactMap,
+  type HobbitContactMapProps,
+  type HobbitContactMapTile,
+} from "./HobbitContactMap";
+export {
+  HobbitSocialFollow,
+  type HobbitSocialFollowProps,
+  type HobbitSocialFollowCard,
+} from "./HobbitSocialFollow";
+export {
   HobbitSection,
   HobbitSubsectionTitle,
   HobbitColorGroup,

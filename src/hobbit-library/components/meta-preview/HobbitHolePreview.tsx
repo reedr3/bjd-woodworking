@@ -7,6 +7,7 @@ import {
   HobbitFooter,
   HobbitHero,
   HobbitNav,
+  HobbitPageContainer,
   HobbitPageShell,
   HobbitPrinciple,
   HobbitProcessSteps,
@@ -25,7 +26,7 @@ export default function HobbitHolePreview() {
     <HobbitPageShell>
       <HobbitBanner>Hobbit Hole Library · Artisan Portfolio Theme</HobbitBanner>
 
-      <div className="mx-auto max-w-[1200px] p-8">
+      <HobbitPageContainer className="py-8">
         <HobbitHero eyebrow="Design Foundation" title="Hobbit Hole">
           A warm, earthy component library for showcasing handcrafted furniture and woodworking. Built for trust,
           craftsmanship, and natural beauty.
@@ -266,7 +267,7 @@ export default function HobbitHolePreview() {
             />
           </div>
         </HobbitSection>
-      </div>
+      </HobbitPageContainer>
     </HobbitPageShell>
   );
 }

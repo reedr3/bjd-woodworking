@@ -23,7 +23,7 @@ export function HobbitNav({ brand, links, cta, className }: HobbitNavProps) {
   return (
     <nav
       className={cn(
-        "flex h-[52px] items-center justify-between rounded-lg bg-hobbit-forest-dark px-8",
+        "flex h-[52px] items-center justify-between rounded-lg bg-hobbit-forest-dark px-hobbit-page",
         className,
       )}
       aria-label="Main"

@@ -39,7 +39,7 @@ export function HobbitHero(props: HobbitHeroProps) {
     const { eyebrow, title, copy, photoSrc, photoAlt = "", buttons } = props;
     return (
       <div className="mb-12 flex min-h-[240px] flex-col overflow-hidden rounded-xl bg-hobbit-cream-warm md:flex-row">
-        <div className="flex w-full flex-col justify-center px-8 py-8 md:w-[58%] md:max-w-[58%] md:flex-[0_0_58%]">
+        <div className="flex w-full flex-col justify-center px-hobbit-page py-8 md:w-[58%] md:max-w-[58%] md:flex-[0_0_58%]">
           <p className="mb-2 font-hobbit-ui text-[10px] uppercase tracking-[0.2em] text-hobbit-gold-dark">
             {eyebrow}
           </p>

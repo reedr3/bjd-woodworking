@@ -2,6 +2,7 @@ import {
   HobbitFooter,
   HobbitHero,
   HobbitNav,
+  HobbitPageContainer,
   HobbitPageShell,
   HobbitPortfolioCard,
   HobbitProcessSteps,
@@ -20,7 +21,7 @@ const featuredPieces = [
 export default function Home() {
   return (
     <HobbitPageShell>
-      <div className="mx-auto max-w-[1200px] px-8 pb-12 pt-8">
+      <HobbitPageContainer className="pb-12 pt-8">
         <HobbitNav
           brand="Bridget J. Duffy"
           links={[
@@ -67,7 +68,7 @@ export default function Home() {
             </a>
           </div>
         </section>
-      </div>
+      </HobbitPageContainer>
 
       <HobbitProcessSteps
         eyebrow="How it works"

@@ -1,5 +1,7 @@
 import { cn } from "@/hobbit-library/utils/utils";
 
+import { HobbitPageContainer } from "./HobbitPageContainer";
+
 export const meta = {
   name: "HobbitTestimonial",
   description: "Customer quote display in grid or single featured layout.",
@@ -33,8 +35,8 @@ export function HobbitTestimonial({ eyebrow, heading, items, variant }: HobbitTe
   if (variant === "featured" && items[0]) {
     const { quote, author } = items[0];
     return (
-      <section className="relative bg-hobbit-cream-light px-10 py-9">
-        <div className="relative mx-auto max-w-[720px] text-center">
+      <section className="relative bg-hobbit-cream-light py-9">
+        <HobbitPageContainer maxWidth="narrow" className="relative text-center">
           <span
             className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-hobbit-display text-[120px] leading-none text-hobbit-gold-light/40 select-none"
             aria-hidden
@@ -45,14 +47,14 @@ export function HobbitTestimonial({ eyebrow, heading, items, variant }: HobbitTe
             <p className="mb-4 font-hobbit-body text-[18px] italic leading-[1.6] text-hobbit-wood-medium">{quote}</p>
             <footer className="font-hobbit-ui text-[13px] text-hobbit-wood-darkest">{author}</footer>
           </blockquote>
-        </div>
+        </HobbitPageContainer>
       </section>
     );
   }
 
   return (
-    <section className="bg-hobbit-cream-light px-10 py-9">
-      <div className="mx-auto max-w-[1200px]">
+    <section className="bg-hobbit-cream-light py-9">
+      <HobbitPageContainer>
         {eyebrow ? (
           <p className="mb-2 font-hobbit-ui text-[10px] uppercase tracking-[0.15em] text-hobbit-gold-dark">
             {eyebrow}
@@ -80,7 +82,7 @@ export function HobbitTestimonial({ eyebrow, heading, items, variant }: HobbitTe
             </article>
           ))}
         </div>
-      </div>
+      </HobbitPageContainer>
     </section>
   );
 }

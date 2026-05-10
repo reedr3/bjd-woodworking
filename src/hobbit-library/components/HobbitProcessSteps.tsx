@@ -1,5 +1,6 @@
 import { cn } from "@/hobbit-library/utils/utils";
 import { HobbitButton, type HobbitButtonVariant } from "./HobbitButton";
+import { HobbitPageContainer } from "./HobbitPageContainer";
 
 export const meta = {
   name: "HobbitProcessSteps",
@@ -37,8 +38,8 @@ export function HobbitProcessSteps({
   const isHorizontal = layout === "horizontal";
 
   return (
-    <section className="bg-hobbit-cream-warm px-10 py-9">
-      <div className="mx-auto max-w-[1200px]">
+    <section className="bg-hobbit-cream-warm py-9">
+      <HobbitPageContainer>
         {eyebrow ? (
           <p className="mb-2 font-hobbit-ui text-[10px] uppercase tracking-[0.15em] text-hobbit-gold-dark">
             {eyebrow}
@@ -84,7 +85,7 @@ export function HobbitProcessSteps({
             </HobbitButton>
           </div>
         ) : null}
-      </div>
+      </HobbitPageContainer>
     </section>
   );
 }

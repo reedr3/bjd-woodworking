@@ -5,6 +5,7 @@ export { HobbitPortfolioCard, type HobbitPortfolioCardProps } from "./HobbitPort
 export { HobbitBanner } from "./HobbitBanner";
 export { HobbitHero, type HobbitHeroProps, type HobbitHeroCta } from "./HobbitHero";
 export { HobbitPageShell } from "./HobbitPageShell";
+export { HobbitPageContainer, type HobbitPageContainerProps } from "./HobbitPageContainer";
 export {
   HobbitProcessSteps,
   type HobbitProcessStepsProps,

@@ -29,6 +29,11 @@
 
   /* Warm elevation for swatches / cards */
   --hobbit-shadow-warm: 0 2px 8px rgb(74 58 24 / 0.1);
+
+  /* Page layout: one gutter + max width for all hobbit sections */
+  --hobbit-page-gutter: 2rem;
+  --hobbit-page-max: 1200px;
+  --hobbit-page-narrow-max: 720px;
 }
 
 @theme inline {
@@ -59,4 +64,8 @@
   --font-hobbit-ui: var(--hobbit-font-ui);
 
   --shadow-hobbit-warm: var(--hobbit-shadow-warm);
+
+  --spacing-hobbit-page: var(--hobbit-page-gutter);
+  --max-width-hobbit-page: var(--hobbit-page-max);
+  --max-width-hobbit-narrow: var(--hobbit-page-narrow-max);
 }

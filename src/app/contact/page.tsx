@@ -195,7 +195,7 @@ export default function ContactPage() {
           { label: "Portfolio", href: "/portfolio" },
           { label: "Commissions", href: "/commissions" },
           { label: "About", href: "/about" },
-          { label: "Contact", href: "/contact" },
+          { label: "Contact", href: "/contact", active: true },
         ]}
         copyright="© 2026 Bridget J. Duffy"
       />

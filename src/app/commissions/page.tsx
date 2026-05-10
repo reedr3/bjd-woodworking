@@ -153,8 +153,9 @@ export default function CommissionsPage() {
         brand="Bridget J. Duffy"
         links={[
           { label: "Portfolio", href: "/portfolio" },
-          { label: "Commissions", href: "/commissions" },
+          { label: "Commissions", href: "/commissions", active: true },
           { label: "About", href: "/about" },
+          { label: "Contact", href: "/contact" },
         ]}
         copyright="© 2026 Bridget J. Duffy. All rights reserved."
       />

@@ -212,7 +212,7 @@ export default function AboutPage() {
         links={[
           { label: "Portfolio", href: "/portfolio" },
           { label: "Commissions", href: "/commissions" },
-          { label: "About", href: "/about" },
+          { label: "About", href: "/about", active: true },
           { label: "Contact", href: "/contact" },
         ]}
         copyright="© 2025 Bridget J. Duffy"

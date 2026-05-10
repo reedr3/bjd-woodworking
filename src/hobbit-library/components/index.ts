@@ -144,6 +144,16 @@ export {
 } from "./HobbitProductCard";
 export { HobbitNotifyStrip, type HobbitNotifyStripProps } from "./HobbitNotifyStrip";
 export {
+  HobbitShopSection,
+  type HobbitShopSectionProps,
+  type HobbitShopItem,
+} from "./HobbitShopSection";
+export {
+  HobbitInstagramStrip,
+  type HobbitInstagramStripProps,
+  type HobbitInstagramTile,
+} from "./HobbitInstagramStrip";
+export {
   HobbitSection,
   HobbitSubsectionTitle,
   HobbitColorGroup,

@@ -31,7 +31,6 @@ export default function Home() {
         brand="Bridget J. Duffy"
         links={[
           { label: "Portfolio", href: "/portfolio", active: true },
-          { label: "Shop", href: "/shop" },
           { label: "Commissions", href: "/commissions" },
           { label: "About", href: "/about" },
           { label: "Contact", href: "/contact" },
@@ -142,7 +141,6 @@ export default function Home() {
         tagline="Handcrafted furniture"
         links={[
           { label: "Portfolio", href: "/portfolio" },
-          { label: "Shop", href: "/shop" },
           { label: "Commissions", href: "/commissions" },
           { label: "About", href: "/about" },
           { label: "Contact", href: "/contact" },

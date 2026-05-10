@@ -19,7 +19,6 @@ export default function AboutPage() {
         brand="Bridget J. Duffy"
         links={[
           { label: "Portfolio", href: "/portfolio" },
-          { label: "Shop", href: "/shop" },
           { label: "Commissions", href: "/commissions" },
           { label: "About", href: "/about", active: true },
           { label: "Contact", href: "/contact" },
@@ -206,14 +205,12 @@ export default function AboutPage() {
           { label: "hello@bridgetjduffy.com" },
         ]}
         primaryCta={{ label: "Request a commission", href: "/commissions" }}
-        secondaryCta={{ label: "Visit the shop", href: "/shop" }}
       />
 
       <HobbitFooter
         brand="Bridget J. Duffy"
         links={[
           { label: "Portfolio", href: "/portfolio" },
-          { label: "Shop", href: "/shop" },
           { label: "Commissions", href: "/commissions" },
           { label: "About", href: "/about" },
           { label: "Contact", href: "/contact" },

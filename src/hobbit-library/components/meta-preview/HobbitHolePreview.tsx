@@ -121,7 +121,6 @@ export default function HobbitHolePreview() {
               brand="Bridget J. Duffy"
               links={[
                 { label: "Portfolio", href: "#", active: true },
-                { label: "Shop", href: "#" },
                 { label: "Commissions", href: "#" },
                 { label: "About", href: "#" },
                 { label: "Contact", href: "#" },
@@ -204,7 +203,6 @@ export default function HobbitHolePreview() {
               tagline="Handmade with love since 2009"
               links={[
                 { label: "Portfolio", href: "#" },
-                { label: "Shop", href: "#" },
                 { label: "Commissions", href: "#" },
                 { label: "About", href: "#" },
                 { label: "Contact", href: "#" },

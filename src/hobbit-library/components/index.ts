@@ -108,6 +108,35 @@ export {
   type HobbitGalleryFilterBarProps,
 } from "./HobbitGalleryFilterBar";
 export {
+  HobbitCommissionHero,
+  type HobbitCommissionHeroProps,
+  type HobbitCommissionHeroMeta,
+} from "./HobbitCommissionHero";
+export {
+  HobbitCommissionProcess,
+  type HobbitCommissionProcessProps,
+  type HobbitCommissionProcessStep,
+} from "./HobbitCommissionProcess";
+export {
+  HobbitPricingGrid,
+  type HobbitPricingGridProps,
+  type HobbitPricingCard,
+} from "./HobbitPricingGrid";
+export {
+  HobbitReassureStrip,
+  type HobbitReassureStripProps,
+  type HobbitReassureItem,
+} from "./HobbitReassureStrip";
+export {
+  HobbitPullQuote,
+  type HobbitPullQuoteProps,
+} from "./HobbitPullQuote";
+export {
+  HobbitFaqAccordion,
+  type HobbitFaqAccordionProps,
+  type HobbitFaqAccordionItem,
+} from "./HobbitFaqAccordion";
+export {
   HobbitSection,
   HobbitSubsectionTitle,
   HobbitColorGroup,

@@ -30,7 +30,7 @@ export default function Home() {
       <HobbitNav
         brand="Bridget J. Duffy"
         links={[
-          { label: "Portfolio", href: "/portfolio", active: true },
+          { label: "Portfolio", href: "/portfolio" },
           { label: "Commissions", href: "/commissions" },
           { label: "About", href: "/about" },
           { label: "Contact", href: "/contact" },

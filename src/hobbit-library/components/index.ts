@@ -22,6 +22,34 @@ export {
 } from "./HobbitTestimonial";
 export { HobbitFooter, type HobbitFooterProps, type HobbitFooterLink } from "./HobbitFooter";
 export {
+  HobbitFormStepper,
+  type HobbitFormStepperProps,
+  type HobbitFormStepperStep,
+} from "./HobbitFormStepper";
+export {
+  HobbitTileSelector,
+  type HobbitTileSelectorProps,
+  type HobbitTileSelectorOption,
+} from "./HobbitTileSelector";
+export { HobbitFaqGrid, type HobbitFaqGridProps, type HobbitFaqItem } from "./HobbitFaqGrid";
+export { HobbitCtaStrip, type HobbitCtaStripProps } from "./HobbitCtaStrip";
+export {
+  HobbitTimeline,
+  type HobbitTimelineProps,
+  type HobbitTimelineStep,
+} from "./HobbitTimeline";
+export { HobbitPageHero, type HobbitPageHeroProps } from "./HobbitPageHero";
+export {
+  HobbitTestimonialStrip,
+  type HobbitTestimonialStripProps,
+  type HobbitTestimonialStripItem,
+} from "./HobbitTestimonialStrip";
+export {
+  HobbitCommissionForm,
+  type HobbitCommissionFormProps,
+  type HobbitCommissionFormStep,
+} from "./HobbitCommissionForm";
+export {
   HobbitSection,
   HobbitSubsectionTitle,
   HobbitColorGroup,

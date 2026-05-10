@@ -25,7 +25,10 @@ export type HobbitTestimonialProps = {
 function Stars({ rating = 5 }: { rating?: number }) {
   const n = Math.min(5, Math.max(1, rating));
   return (
-    <p className="mb-2 font-hobbit-ui text-[12px] leading-none text-hobbit-gold-base" aria-label={`${n} out of 5 stars`}>
+    <p
+      className="mb-2 font-hobbit-ui text-[20px] leading-none tracking-[0.06em] text-hobbit-gold-rich drop-shadow-[0_1px_0_rgb(74_58_24_/_0.12)]"
+      aria-label={`${n} out of 5 stars`}
+    >
       {"★".repeat(n)}
     </p>
   );
@@ -72,8 +75,14 @@ export function HobbitTestimonial({ eyebrow, heading, items, variant }: HobbitTe
               )}
             >
               <Stars rating={item.rating ?? 5} />
-              <p className="mb-3 font-hobbit-body text-[12px] italic leading-[1.7] text-hobbit-wood-medium">
+              <p className="mb-3 font-hobbit-body text-[12px] italic leading-[1.7] text-hobbit-wood-darkest">
+                <span className="text-hobbit-gold-dark" aria-hidden>
+                  &ldquo;
+                </span>
                 {item.quote}
+                <span className="text-hobbit-gold-dark" aria-hidden>
+                  &rdquo;
+                </span>
               </p>
               <p className="font-hobbit-ui text-[11px] text-hobbit-wood-darkest">{item.author}</p>
               {item.project ? (

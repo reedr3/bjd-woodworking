@@ -4,6 +4,8 @@
   --hobbit-cream-light: #faf5ea;
   --hobbit-cream-base: #f0e8d0;
   --hobbit-cream-warm: #f0e6c8;
+  /* Commission / warm section bands — slightly warmer than cream-light */
+  --hobbit-beige-section: #e9dcc4;
   --hobbit-sand: #d8ceaa;
   --hobbit-paper: #fffdf5;
 
@@ -40,6 +42,7 @@
   --color-hobbit-cream-light: var(--hobbit-cream-light);
   --color-hobbit-cream-base: var(--hobbit-cream-base);
   --color-hobbit-cream-warm: var(--hobbit-cream-warm);
+  --color-hobbit-beige-section: var(--hobbit-beige-section);
   --color-hobbit-sand: var(--hobbit-sand);
   --color-hobbit-paper: var(--hobbit-paper);
 

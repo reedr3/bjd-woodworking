@@ -38,7 +38,7 @@ export function HobbitProcessSteps({
   const isHorizontal = layout === "horizontal";
 
   return (
-    <section className="bg-hobbit-cream-warm py-9">
+    <section className="bg-hobbit-beige-section py-9">
       <HobbitPageContainer>
         {eyebrow ? (
           <p className="mb-2 font-hobbit-ui text-[10px] uppercase tracking-[0.15em] text-hobbit-gold-dark">
@@ -46,7 +46,7 @@ export function HobbitProcessSteps({
           </p>
         ) : null}
         <div className="mb-3 h-0.5 w-9 rounded-[1px] bg-hobbit-gold-base" aria-hidden />
-        <h2 className="mb-3 font-hobbit-display text-[22px] text-hobbit-wood-darkest">{heading}</h2>
+        <h2 className="mb-3 font-hobbit-display text-[22px] font-bold text-hobbit-wood-darkest">{heading}</h2>
         {subtext ? (
           <p className="mb-6 max-w-[500px] font-hobbit-body text-[13px] leading-[1.7] text-hobbit-gold-dark">
             {subtext}
@@ -65,13 +65,13 @@ export function HobbitProcessSteps({
         >
           {steps.map((step) => (
             <div key={step.number} className="px-[1.1rem] py-4">
-              <p className="mb-1 font-hobbit-ui text-[10px] tracking-[0.1em] text-hobbit-forest-light">
-                {step.number}
+              <p className="mb-1 font-hobbit-ui text-[10px] tracking-[0.1em] text-hobbit-forest-pale">
+                Step {step.number}
               </p>
               <h3 className="mb-1.5 font-hobbit-display text-[13px] font-bold text-hobbit-cream-light">
                 {step.title}
               </h3>
-              <p className="font-hobbit-body text-[10px] leading-[1.5] text-hobbit-forest-pale">
+              <p className="font-hobbit-body text-[11px] leading-[1.55] text-hobbit-cream-light">
                 {step.description}
               </p>
             </div>

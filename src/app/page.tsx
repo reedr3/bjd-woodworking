@@ -5,49 +5,68 @@ import {
   HobbitPageContainer,
   HobbitPageShell,
   HobbitPortfolioCard,
+  type HobbitPortfolioBlockTone,
   HobbitProcessSteps,
   HobbitTestimonial,
 } from "@/hobbit-library/components";
 
-const featuredPieces = [
-  { title: "Walnut dining table", tag: "Walnut", spec: "84″ × 38″" },
-  { title: "White oak sideboard", tag: "White Oak", spec: "60″ × 32″" },
-  { title: "Cherry writing desk", tag: "Cherry", spec: "48″ × 24″" },
-  { title: "Maple side tables", tag: "Hard Maple", spec: "Set of 2" },
-  { title: "Walnut bookshelf", tag: "Walnut", spec: "72″ tall" },
-  { title: "Oak coffee table", tag: "White Oak", spec: "48″ × 24″" },
-] as const;
+const featuredPieces: ReadonlyArray<{
+  title: string;
+  tag: string;
+  spec: string;
+  tone: HobbitPortfolioBlockTone;
+}> = [
+  { title: "Walnut dining table", tag: "Walnut", spec: "84″ × 38″", tone: "gold" },
+  { title: "White oak sideboard", tag: "White Oak", spec: "60″ × 32″", tone: "sage" },
+  { title: "Cherry writing desk", tag: "Cherry", spec: "48″ × 24″", tone: "olive" },
+  { title: "Maple side tables", tag: "Hard Maple", spec: "Set of 2", tone: "sage" },
+  { title: "Walnut bookshelf", tag: "Walnut", spec: "72″ tall", tone: "olive" },
+  { title: "Oak coffee table", tag: "White Oak", spec: "48″ × 24″", tone: "gold" },
+];
 
 export default function Home() {
   return (
     <HobbitPageShell>
-      <HobbitPageContainer className="pb-12 pt-8">
-        <HobbitNav
-          brand="Bridget J. Duffy"
-          links={[
-            { label: "Portfolio", href: "/portfolio" },
-            { label: "Shop", href: "/shop" },
-            { label: "Commissions", href: "/commissions" },
-            { label: "About", href: "/about" },
-            { label: "Contact", href: "/contact" },
-          ]}
-          cta={{ label: "Request Commission", href: "/commissions" }}
-          className="mb-10"
-        />
+      <HobbitNav
+        brand="Bridget J. Duffy"
+        links={[
+          { label: "Portfolio", href: "/portfolio", active: true },
+          { label: "Shop", href: "/shop" },
+          { label: "Commissions", href: "/commissions" },
+          { label: "About", href: "/about" },
+          { label: "Contact", href: "/contact" },
+        ]}
+        cta={{ label: "Request Commission", href: "/commissions" }}
+      />
 
-        <HobbitHero
-          layout="split"
-          eyebrow="Handcrafted furniture"
-          title="Made to last a lifetime"
-          copy="Every piece is designed around your space and built by hand in our workshop."
-          buttons={[
-            { label: "Start a commission", variant: "primary", href: "/commissions" },
-            { label: "View the work", variant: "ghost", href: "/portfolio" },
-          ]}
-        />
+      <HobbitHero
+        layout="split"
+        eyebrow="Handcrafted furniture"
+        title="Made to last a lifetime"
+        copy="Every piece is designed around your space and built by hand in our workshop."
+        buttons={[
+          { label: "Start a commission", variant: "primary", href: "/commissions" },
+          { label: "View the work", variant: "ghost", href: "/portfolio" },
+        ]}
+      />
 
-        <section className="mb-12">
-          <div className="mb-3 grid grid-cols-1 gap-[10px] sm:grid-cols-2 md:grid-cols-3">
+      <HobbitPageContainer className="pb-10 pt-5">
+        <section className="mb-8">
+          <div className="mb-4 flex flex-col gap-3 sm:mb-5 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="mb-1.5 font-hobbit-ui text-[10px] uppercase tracking-[0.2em] text-hobbit-gold-dark">
+                Recent work
+              </p>
+              <h2 className="font-hobbit-display text-[22px] font-bold text-hobbit-wood-darkest">Featured pieces</h2>
+            </div>
+            <a
+              href="/portfolio"
+              className="shrink-0 self-start font-hobbit-ui text-[11px] uppercase tracking-[0.08em] text-hobbit-gold-base underline underline-offset-2 outline-none transition-opacity hover:opacity-80 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-hobbit-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-hobbit-cream-light sm:self-auto"
+            >
+              View all work
+            </a>
+          </div>
+          <div className="grid grid-cols-1 gap-[10px] sm:grid-cols-2 md:grid-cols-3">
             {featuredPieces.map((piece) => (
               <HobbitPortfolioCard
                 key={piece.title}
@@ -56,16 +75,10 @@ export default function Home() {
                 tag={piece.tag}
                 spec={piece.spec}
                 tagVariant="forest"
+                minimal
+                blockTone={piece.tone}
               />
             ))}
-          </div>
-          <div className="flex justify-end">
-            <a
-              href="/portfolio"
-              className="font-hobbit-body text-[13px] text-hobbit-gold-base underline underline-offset-2 outline-none transition-opacity hover:opacity-80 focus-visible:rounded-sm focus-visible:ring-2 focus-visible:ring-hobbit-gold-base focus-visible:ring-offset-2 focus-visible:ring-offset-hobbit-cream-light"
-            >
-              View all work
-            </a>
           </div>
         </section>
       </HobbitPageContainer>
@@ -126,7 +139,7 @@ export default function Home() {
 
       <HobbitFooter
         brand="Bridget J. Duffy"
-        tagline="Handmade with love since 2009"
+        tagline="Hand-crafted furniture"
         links={[
           { label: "Portfolio", href: "/portfolio" },
           { label: "Shop", href: "/shop" },

@@ -139,7 +139,7 @@ export default function Home() {
 
       <HobbitFooter
         brand="Bridget J. Duffy"
-        tagline="Hand-crafted furniture"
+        tagline="Handcrafted furniture"
         links={[
           { label: "Portfolio", href: "/portfolio" },
           { label: "Shop", href: "/shop" },
